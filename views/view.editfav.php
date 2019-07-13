@@ -10,17 +10,31 @@ if($user->vorname!=""){
 
 
 <form action="?task=editfav" method="post">
-<select name="ausgewStation">
+<select name="addfav">
 <?php
 $allStat=core::$view->allStat;
 foreach ($allStat as $station){
 echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n");
 }
 ?>
-
-
-
 </select>
+    
 <input type="submit" name="editfav" value="Station hinzufügen">
+</form>
 
+
+
+<center><label><h1><?php echo("Oder entferne Stationen aus deine Favoritenliste") ?></h1></label></center>
+
+
+<form action="?task=editfav" method="post">
+<select name="delfav">
+<?php
+$allfavs=core::$view->allfavs;
+foreach ($allfavs as $station){
+echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n");
+}
+?>
+</select>
+<input type="submit" name="editfav" value="Station entfernen">
 
