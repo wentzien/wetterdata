@@ -11,7 +11,7 @@ $aktuelleStat=Core::$user->homewetter;
 $pdo = Core::$pdo;
 
 
-$SQLausgewStat="select * from Stationen";
+$SQLausgewStat="select * from Stationen Where BL='BW' Order by stationsname";
 
 $ausgewStat=$pdo->query($SQLausgewStat);
 

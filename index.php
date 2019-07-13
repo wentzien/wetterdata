@@ -60,6 +60,7 @@
            <div id="menu">
         
        	  <a href="?task=home" data-role="button" data-icon="gamepad" data-mini="true" data-iconpos="notext" data-inline="true" class="ui-link ui-btn ui-icon-home ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all ui-mini"></a>
+          <a href="?task=editfavnav" data-role="button" data-icon="gamepad" data-mini="true" data-iconpos="notext" data-inline="true" class="ui-link ui-btn ui-icon-heart ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all ui-mini"></a>
           
     </div>
      
