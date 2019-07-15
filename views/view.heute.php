@@ -28,7 +28,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [
             {
 		name: "<?php
-                $NameAusgStation=core::$view->NameAusgStation;
+                $NameAusgStation=core::$view->stationName0;
                 foreach($NameAusgStation as $row1){
                 echo($row1['stationsname']);
                 $d=2;
@@ -39,10 +39,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		showInLegend: true,
 		dataPoints: [
 <?php
-$heute=core::$view->heute;
+$heute=core::$view->heuteTemp0;
 $i="1";
-foreach ($heute as $row){
-    echo("{ x: new Date (".$row['canvasts']."), y: ".$row['temp20']." },\n");
+foreach ($heute as $row2){
+    echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['temp20']." },\n");
 }
 
 ?>
@@ -101,16 +101,16 @@ function toggleDataSeries(e){
 </body>
 </html>
 <form action="?task=heute" method="post" data-ajax='false'>
-<select name="ausgewStation">
-<?php
-$ausgewStat=core::$view->ausgewStat;
-foreach ($ausgewStat as $as){
-echo("<option value=".$as['id']." >".$as['stationsname']."</option>\n");
-}
-?>
-<br>
-<input type="submit" name="anzeigen" value="Anzeigen">
-</select>
+    <select name="ausgewStation[]" id="select-custom-24" data-native-menu="false" multiple="multiple" data-iconpos="left">
+        <option>Ortsauswahl</option>
+        <?php
+        $ausgewStat=core::$view->ausgewStat;
+        foreach ($ausgewStat as $as){
+        echo("<option value=".$as['id']." >".$as['stationsname']."</option>\n");
+        }
+        ?>
+        <input type="submit" name="anzeigen" value="Anzeigen">
+    </select>
+</form>
 
-<?php echo("Die ID der ausgewählten Station: ".$dieStation=core::$view->dieStation); ?>
-
+<?php echo($dieStation0=core::$view->stationID0)?>
