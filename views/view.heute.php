@@ -26,28 +26,30 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		shared: true
 	},
 	data: [
-            {
-		name: "<?php
-                $NameAusgStation=core::$view->stationName0;
-                foreach($NameAusgStation as $row1){
-                echo($row1['stationsname']);
-                $d=2;
-                }
-                ?>",
+            <?php 
+            echo('{
+		name: "');
+                        //Ausgabe des Stationsnamen
+                        $NameAusgStation=core::$view->stationName0;
+                        foreach($NameAusgStation as $row1){
+                        echo($row1['stationsname']);
+                        }   
+                        //Ende Ausgabe des Stationsnamen
+            echo('",
 		type: "spline",
 		yValueFormatString: "#0.## °C",
 		showInLegend: true,
-		dataPoints: [
-<?php
-$heute=core::$view->heuteTemp0;
-$i="1";
-foreach ($heute as $row2){
-    echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['temp20']." },\n");
-}
-
-?>
-		]
-	},
+		dataPoints: ['); 
+                        //Ausgabe der Temp Werte
+                        $heute=core::$view->heuteTemp0;
+                        $i="1";
+                        foreach ($heute as $row2){
+                        echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['temp20']." },\n");
+                        }
+                        //Ende der Ausgabe der Temp Werte
+            echo(']
+            },'); 
+            ?>
 //	{
 //		name: "Martha Vineyard",
 //		type: "spline",
