@@ -1,4 +1,5 @@
 <?php 
+ini_set("max_execution_time", 36000);
 
 $stationen=array();
 $stationen[]="03925";
@@ -68,7 +69,7 @@ $pforzheim=array();
          $SQL="INSERT INTO Temperatur (station,timestamp, ts, Luftdruck, temp5, temp20,feuchte, taupunkt,quality,canvasts) VALUES (?,?,?,?,?,?,?,?,?,?)"
                  . "ON DUPLICATE KEY UPDATE ts=VALUES(ts), Luftdruck=VALUES(Luftdruck), temp5=VALUES(temp5), temp20=VALUES(temp20), feuchte=VALUES(feuchte), taupunkt=VALUES(taupunkt), quality=VALUES(quality);";
                 
-            $SQL="INSERT IGNORE INTO Temperatur (station,timestamp, ts, Luftdruck, temp5, temp20,feuchte, taupunkt,quality,canvasts) VALUES (?,?,?,?,?,?,?,?,?,?)";
+//            $SQL="INSERT IGNORE INTO Temperatur (station,timestamp, ts, Luftdruck, temp5, temp20,feuchte, taupunkt,quality,canvasts) VALUES (?,?,?,?,?,?,?,?,?,?)";
                 
           
          $station=$entry[0];
@@ -106,6 +107,6 @@ foreach ($stationen as $station) {
     $urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/recent/10minutenwerte_TU_".$station."_akt.zip";
     
     DatenEinspielen($urlnow);
-    //DatenEinspielen($urlrecent);
+    DatenEinspielen($urlrecent);
 }
 ?>
