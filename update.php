@@ -1,10 +1,8 @@
 <?php 
-$station="03362";
 
-//Url für Datei der Daten von "heute"
-$urlnow = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/now/10minutenwerte_TU_".$station."_now.zip";
-//Url für Datei der Daten von "gestern" bis 2 Jahre zurück
-$urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/recent/10minutenwerte_TU_".$station."_akt.zip";
+$stationen=array();
+$stationen[]="03925";
+$stationen[]="03362";
 
 function DatenEinspielen ($url){
 
@@ -46,7 +44,7 @@ if ($zip->open($destination_dir . $local_zip_file)) {
     for ($i = 0; $i < $zip->numFiles; $i++) {
         if ($zip->extractTo($destination_dir, array($zip->getNameIndex($i)))) {
             $csvname= $destination_dir . $zip->getNameIndex($i);
-            echo $csvname;
+            echo "$csvname<br/>";
         }
     }
     $zip->close();
@@ -61,7 +59,8 @@ $pforzheim=array();
      while($zeile=fgetcsv($csv,0,";")){
             array_push($pforzheim,$zeile);
      }
-     echo count($pforzheim);
+     $pf=count($pforzheim);
+     echo "$pf<br/>";
      
      
      
@@ -100,6 +99,13 @@ $pforzheim=array();
 }
 }
 
-DatenEinspielen($urlnow);
-//DatenEinspielen($urlrecent);
+foreach ($stationen as $station) {
+    //Url für Datei der Daten von "heute"
+    $urlnow = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/now/10minutenwerte_TU_".$station."_now.zip";
+    //Url für Datei der Daten von "gestern" bis 2 Jahre zurück
+    $urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/recent/10minutenwerte_TU_".$station."_akt.zip";
+    
+    DatenEinspielen($urlnow);
+    //DatenEinspielen($urlrecent);
+}
 ?>
