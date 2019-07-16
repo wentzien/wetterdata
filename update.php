@@ -1,5 +1,5 @@
 <?php 
-$station="03925";
+$station="03362";
 
 //Url für Datei der Daten von "heute"
 $urlnow = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/now/10minutenwerte_TU_".$station."_now.zip";

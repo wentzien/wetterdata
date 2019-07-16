@@ -27,11 +27,16 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	data: [
             <?php 
+            $length=core::$view->length;
+            $length=$length-1;
+            for($x=0; $x<=$length; $x++){
             echo('{
 		name: "');
                         //Ausgabe des Stationsnamen
-                        $NameAusgStation=core::$view->stationName0;
-                        foreach($NameAusgStation as $row1){
+                        $row1="";
+                        $stationNameNummer="stationName$x";
+                        $stationName=core::$view->$stationNameNummer;
+                        foreach($stationName as $row1){
                         echo($row1['stationsname']);
                         }   
                         //Ende Ausgabe des Stationsnamen
@@ -41,14 +46,17 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		showInLegend: true,
 		dataPoints: ['); 
                         //Ausgabe der Temp Werte
-                        $heute=core::$view->heuteTemp0;
+                        $row2="";
+                        $heuteTempNummer="heuteTemp$x";
+                        $heuteTemp=core::$view->$heuteTempNummer;
                         $i="1";
-                        foreach ($heute as $row2){
+                        foreach ($heuteTemp as $row2){
                         echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['temp20']." },\n");
                         }
                         //Ende der Ausgabe der Temp Werte
             echo(']
             },'); 
+            }
             ?>
 //	{
 //		name: "Martha Vineyard",
@@ -114,5 +122,3 @@ function toggleDataSeries(e){
         <input type="submit" name="anzeigen" value="Anzeigen">
     </select>
 </form>
-
-<?php echo($dieStation0=core::$view->stationID0)?>
