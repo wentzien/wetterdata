@@ -1,0 +1,1 @@
+Hier wird eine Statistik zu den Wetter Daten angezeig.

@@ -43,7 +43,9 @@ Core::setTaskMap(array(
   'newregister'=>'',
   'heute'=>'controller.heute.php',
   'editfav'=>'controller.editfav.php',  
-  'heute2'=>'controller.heute2.php'
+  'heute2'=>'controller.heute2.php',
+  'historie'=>'controller.historie.php',
+  'statistik'=>'controller.statistik.php',
    ));
 
 
