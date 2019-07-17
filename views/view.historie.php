@@ -10,7 +10,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Historisches Wetter"
 	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "MM-YY"
 	},
 	axisY: {
 		title: "Temperature (in °C)",
@@ -80,7 +80,7 @@ function toggleDataSeries(e){
 <script src="canvasjs/canvasjs.min.js"></script>
 </body>
 </html>
-<form action="?task=heute" method="post" data-ajax='false'>
+<form action="?task=historie" method="post" data-ajax='false'>
     <select name="ausgewStation[]" id="select-custom-24" data-native-menu="false" multiple="multiple" data-iconpos="left">
         <option>Ortsauswahl</option>
         <?php
@@ -89,10 +89,13 @@ function toggleDataSeries(e){
         echo("<option value=".$as['id']." >".$as['stationsname']."</option>\n");
         }
         ?>
-        <input type="submit" name="anzeigen" value="Anzeigen">
     </select>
+    <input type="hidden" name="taskerkenner"  id="taskerkenner" value="historie"/>
+    <label for="datumVon">Zeitraum von:</label>
+    <input type="date" name="datumVon" id="datumVon" value=""/>
+    <label for="datumVon">Zeitraum bis:</label>
+    <input type="date" name="datumBis" id="datumBis" value=""/>
+    <input type="submit" name="anzeigen" value="Anzeigen">
 </form>
 
 
-<label for="date">Date Input:</label>
-<input type="date" name="date" id="date" value=""  />	

@@ -7,10 +7,11 @@ $datum = date("Y-m-d",$timestamp);
 
 $dieStation=$_POST['ausgewStation'];
 $taskerkenner=$_POST['taskerkenner'];
-if($taskerkenner=="favorit"){
-    $alsarray=array();
-    $alsarray[]=$dieStation;
-    $dieStation=$alsarray;
+$datumVon=$_POST['datumVon'];
+$datumBis=$_POST['datumBis'];
+if($taskerkenner!="historie"){
+$datumVon="";
+$datumBis="";
 }
 
 
@@ -28,7 +29,7 @@ foreach($dieStation as $stat){
     Core::$view->$stationsNummer=$stat;
     
     //Übergabe der Temp Werte
-    $sqlheute="select * from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+    $sqlheute="select * from Temperatur where station=$stat AND temp20>-273 AND ts order by ts asc";
     $heute=$pdo->query($sqlheute);
     $HeuteTempNummer="heuteTemp$i";
     Core::$view->$HeuteTempNummer=$heute;
