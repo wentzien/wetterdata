@@ -10,10 +10,14 @@ $taskerkenner=$_POST['taskerkenner'];
 $datumVon=$_POST['datumVon'];
 $datumBis=$_POST['datumBis'];
 if($datumVon==""){
-$datumVon="1800-01-01";
+    $datumVon="1800-01-01";
 }
 if($datumBis==""){
-$datumBis="2200-01-01";
+    $datumBis="2200-01-01";
+}
+if($taskerkenner!="historie"){
+    $datumVon="";
+    $datumBis="";
 }
 Core::$view->datumVon=$datumVon;
 Core::$view->datumBis=$datumBis;
