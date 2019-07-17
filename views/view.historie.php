@@ -92,9 +92,9 @@ function toggleDataSeries(e){
     </select>
     <input type="hidden" name="taskerkenner"  id="taskerkenner" value="historie"/>
     <label for="datumVon">Zeitraum von:</label>
-    <input type="date" name="datumVon" id="datumVon" value=""/>
+    <input type="date" name="datumVon" id="datumVon" value="<?=core::$view->datumVon ?>"/>
     <label for="datumVon">Zeitraum bis:</label>
-    <input type="date" name="datumBis" id="datumBis" value=""/>
+    <input type="date" name="datumBis" id="datumBis" value="<?=core::$view->datumBis ?>"/>
     <input type="submit" name="anzeigen" value="Anzeigen">
 </form>
 

@@ -9,12 +9,14 @@ $dieStation=$_POST['ausgewStation'];
 $taskerkenner=$_POST['taskerkenner'];
 $datumVon=$_POST['datumVon'];
 $datumBis=$_POST['datumBis'];
-if($taskerkenner!="historie"){
-$datumVon="";
-$datumBis="";
+if($datumVon==""){
+$datumVon="1800-01-01";
 }
-
-
+if($datumBis==""){
+$datumBis="2200-01-01";
+}
+Core::$view->datumVon=$datumVon;
+Core::$view->datumBis=$datumBis;
 //Länge des Arrays
 $length=count($dieStation);
 Core::$view->length=$length;
@@ -29,7 +31,7 @@ foreach($dieStation as $stat){
     Core::$view->$stationsNummer=$stat;
     
     //Übergabe der Temp Werte
-    $sqlheute="select * from Temperatur where station=$stat AND temp20>-273 AND ts order by ts asc";
+    $sqlheute="select * from Temperatur where station=$stat AND temp20>-273 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
     $heute=$pdo->query($sqlheute);
     $HeuteTempNummer="heuteTemp$i";
     Core::$view->$HeuteTempNummer=$heute;
