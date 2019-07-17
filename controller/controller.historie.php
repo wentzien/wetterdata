@@ -4,9 +4,11 @@ Core::$view->path["view1"]="views/view.historie.php";
 date_default_timezone_set("Europe/Berlin");
 $timestamp = time();
 $datum = date("Y-m-d",$timestamp);
-
+$pdo=Core::$pdo;
 $dieStation=$_POST['ausgewStation'];
 $taskerkenner=$_POST['taskerkenner'];
+//Wurden Stationswerte übergenen?, wenn nicht soll der Nuter darauf hingwiesen werden dass er eine Station auswähelen soll
+If ($dieStation<>""){
 $datumVon=$_POST['datumVon'];
 $datumBis=$_POST['datumBis'];
 if($datumVon==""){
@@ -27,7 +29,6 @@ Core::$view->length=$length;
 
 //Übergibt die StationsID's, Name und Temp Werte
 $i=0;
-$pdo=Core::$pdo;
 foreach($dieStation as $stat){
     
     //Übergabe der StationsID
@@ -47,6 +48,10 @@ foreach($dieStation as $stat){
     Core::$view->$stationNameNummer=$stationName;
     
     $i++;
+}
+}
+else{
+Core::addError("Bitte wähle eine Station aus");
 }
 
 //Listet alle Stationen auf
