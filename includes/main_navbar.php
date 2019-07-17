@@ -21,8 +21,13 @@
          <?php
         foreach ($ufavs as $station){
             ?>
-            <form action="?task=heute" method="post">
+            <form action="?task=heute" method="post" data-ajax='false'>
+                <?php 
+//                $ausgewStat=array();
+//                $ausgewStat[0]=$station['id'];
+                ?>
             <input type="hidden" id="stat" name="ausgewStation" value="<?=$station['id']?>">
+            <input type="hidden" id="taskkenner" name="taskerkenner" value="favorit">
             <input type="submit" name="station" value="<?=$station['stationsname']?>">
             </form>
             

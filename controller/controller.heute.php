@@ -6,6 +6,13 @@ $timestamp = time();
 $datum = date("Y-m-d",$timestamp);
 
 $dieStation=$_POST['ausgewStation'];
+$taskerkenner=$_POST['taskerkenner'];
+if($taskerkenner=="favorit"){
+    $alsarray=array();
+    $alsarray[]=$dieStation;
+    $dieStation=$alsarray;
+}
+
 
 //Länge des Arrays
 $length=count($dieStation);

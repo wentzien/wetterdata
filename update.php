@@ -107,6 +107,6 @@ foreach ($stationen as $station) {
     $urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/air_temperature/recent/10minutenwerte_TU_".$station."_akt.zip";
     
     DatenEinspielen($urlnow);
-    DatenEinspielen($urlrecent);
+//    DatenEinspielen($urlrecent);
 }
 ?>
