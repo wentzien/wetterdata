@@ -23,7 +23,7 @@
             ?>
             <form action="?task=heute" method="post">
             <input type="hidden" id="stat" name="ausgewStation" value="<?=$station['id']?>">
-            <input type="submit" name="station" value="<?=$station['stationsname']?>Hallo">
+            <input type="submit" name="station" value="<?=$station['stationsname']?>">
             </form>
             
             <?php            
