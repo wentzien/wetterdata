@@ -7,7 +7,7 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	title:{
-		text: "Das heutige Wetter"
+		text: "Historisches Wetter"
 	},
 	axisX: {
 		valueFormatString: "HH:mm"
@@ -92,3 +92,7 @@ function toggleDataSeries(e){
         <input type="submit" name="anzeigen" value="Anzeigen">
     </select>
 </form>
+
+
+<label for="date">Date Input:</label>
+<input type="date" name="date" id="date" value=""  />	
