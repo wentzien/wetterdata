@@ -7,8 +7,7 @@ $datum = date("Y-m-d",$timestamp);
 $pdo=Core::$pdo;
 $dieStation=$_POST['ausgewStation'];
 $taskerkenner=$_POST['taskerkenner'];
-//Wurden Stationswerte übergenen?, wenn nicht soll der Nuter darauf hingwiesen werden dass er eine Station auswähelen soll
-If ($dieStation<>""){
+
 $datumVon=$_POST['datumVon'];
 $datumBis=$_POST['datumBis'];
 if($datumVon==""){
@@ -21,8 +20,11 @@ if($taskerkenner!="historie"){
     $datumVon="";
     $datumBis="";
 }
+
 Core::$view->datumVon=$datumVon;
 Core::$view->datumBis=$datumBis;
+//Wurden Stationswerte übergenen?, wenn nicht soll der Nuter darauf hingwiesen werden dass er eine Station auswähelen soll
+If ($dieStation<>""){
 //Länge des Arrays
 $length=count($dieStation);
 Core::$view->length=$length;
