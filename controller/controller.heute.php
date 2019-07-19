@@ -29,10 +29,31 @@ If ($dieStation<>""){
         Core::$view->$stationsNummer=$stat;
 
         //Übergabe der Temp Werte
-        $sqlheute="select * from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
-        $heute=$pdo->query($sqlheute);
+        $sqltemp="select * from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $tempheute=$pdo->query($sqltemp);
         $HeuteTempNummer="heuteTemp$i";
-        Core::$view->$HeuteTempNummer=$heute;
+        Core::$view->$HeuteTempNummer=$tempheute;
+        
+        //Übergabe des Luftdrucks
+        $sqldruck="";
+        $druckheute=$pdo->query($sqldruck);
+        $HeuteDruckNummer="heuteDruck$i";
+        Core::$view->$HeuteDruckNummer=$druckheute;
+        //Ende Übergabe des Luftdrucks
+
+        //Übergabe Luftfeuchtigkeit
+        $sqlfeuchte="";
+        $feuchteheute=$pdo->query($sqlfeuchte);
+        $HeuteFeuchteNummer="heuteFeuchte$i";
+        Core::$view->$HeuteFeuchteNummer=$feuchteheute;
+        //Ende Übergabe der Luftfeuchtigkeit
+        
+        //Übergabe des Taupunktes
+        $sqltaupunkt="";
+        $taupunktheute=$pdo->query($sqltaupunkt);
+        $HeuteTaupunktNummer="heuteTaupunkt$i";
+        Core::$view->$HeuteTaupunktNummer=$drucktaupunkt;
+        //Ende Übergabe des Taupunkt
 
         //Übergabe  des Stationsnamen
         $sqlStationName="select stationsname from Stationen where id=$stat";
