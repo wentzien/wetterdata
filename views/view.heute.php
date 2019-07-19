@@ -1,14 +1,27 @@
-<!DOCTYPE HTML>
+<div data-role="tabs" id="tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#temp" data-ajax="false">Temperatur</a></li>
+      <li><a href="#druck" data-ajax="false">Luftdruck</a></li>
+      <li><a href="#feuchte" data-ajax="false">Luftfeuchtigkeit</a></li>
+      <li><a href="#tau" data-ajax="false">Taupunkt</a></li>
+    </ul>
+  </div>
+  <div id="temp" class="ui-body-d ui-content">
+    <!DOCTYPE HTML>
 <html>
-<head>  
+<head>
+<div data-role="header">
+    <h1>Der heutige Tag</h1>
+</div>
 <script>
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
-	title:{
-		text: "Das heutige Wetter"
-	},
+//	title:{
+//		text: "Das heutige Wetter"
+//	},
 	axisX: {
 		valueFormatString: "HH:mm"
 	},
@@ -92,3 +105,17 @@ function toggleDataSeries(e){
         <input type="submit" name="anzeigen" value="Anzeigen">
     </select>
 </form>
+  </div>
+  <div id="druck" class="ui-body-d ui-content">
+    <h1>luftdruck</h1>
+  </div>
+    <div id="feuchte" class="ui-body-d ui-content">
+    <h1>luftfeuchtigkeit</h1>
+  </div>
+    <div id="tau" class="ui-body-d ui-content">
+    <h1>taupunkt</h1>
+  </div>
+</div>
+    <div data-role="footer">
+    <h4>Powered by Hochschule Pforzheim</h4>
+</div>
