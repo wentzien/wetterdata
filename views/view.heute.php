@@ -39,9 +39,9 @@
 
 <!--Footer-->
 
-<div data-role="footer">
+<!--<div data-role="footer">
     <h4>Powered by Hochschule Pforzheim</h4>
-</div>
+</div>-->
 
 <script>
 window.onload = function () {
@@ -77,9 +77,10 @@ var chart = new CanvasJS.Chart("chartContainerTemp", {
 		name: "');
                         //Ausgabe des Stationsnamen
                         $row1="";
-                        $stationNameNummer="stationName$x";
-                        $stationName=core::$view->$stationNameNummer;
-                        foreach($stationName as $row1){
+                        $stationNameTemp="stationTemp$x";
+                        $stationTemp=core::$view->$stationNameTemp;
+//                        ${$stationNameNummer}=$stationName;
+                        foreach($stationTemp as $row1){
                         echo($row1['stationsname']);
                         }   
                         //Ende Ausgabe des Stationsnamen
@@ -92,7 +93,7 @@ var chart = new CanvasJS.Chart("chartContainerTemp", {
                         $row2="";
                         $heuteTempNummer="heuteTemp$x";
                         $heuteTemp=core::$view->$heuteTempNummer;
-                        $i="1";
+//                        ${$heuteTempNummer}=$heuteTemp;
                         foreach ($heuteTemp as $row2){
                         echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['temp20']." },\n");
                         }
@@ -108,11 +109,11 @@ chart.render();
 //Luftdruck
 var chart = new CanvasJS.Chart("chartContainerDruck", {
 	animationEnabled: true,
-//	title:{
-//		text: "Das heutige Wetter"
-//	},
+	title:{
+		text: "Daily High Temperature at Different Beaches"
+	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "DD MMM,YY"
 	},
 	axisY: {
 		title: "Temperature (in °C)",
@@ -127,40 +128,51 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
 	toolTip:{
 		shared: true
 	},
-	data: [
-            <?php 
-//            $length=core::$view->length;
-//            $length=$length-1;
-            for($x=0; $x<=$length; $x++){
-            echo('{
-		name: "');
-                        //Ausgabe des Stationsnamen
-                        $row1="";
-                        $stationNameNummer="stationName$x";
-                        $stationName=core::$view->$stationNameNummer;
-                        foreach($stationName as $row1){
-                        echo($row1['stationsname']);
-                        }   
-                        //Ende Ausgabe des Stationsnamen
-            echo('",
+	data: [{
+		name: "Myrtle Beach",
 		type: "spline",
 		yValueFormatString: "#0.## °C",
 		showInLegend: true,
-		dataPoints: ['); 
-                        //Ausgabe der Temp Werte
-                        $row2="";
-                        $heuteTempNummer="heuteTemp$x";
-                        $heuteTemp=core::$view->$heuteTempNummer;
-                        $i="1";
-                        foreach ($heuteTemp as $row2){
-                        echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['Luftdruck']." },\n");
-                        }
-                        //Ende der Ausgabe der Temp Werte
-            echo(']
-            },'); 
-            }
-            ?>
-    ]
+		dataPoints: [
+			{ x: new Date(2017,6,24), y: 31 },
+			{ x: new Date(2017,6,25), y: 31 },
+			{ x: new Date(2017,6,26), y: 29 },
+			{ x: new Date(2017,6,27), y: 29 },
+			{ x: new Date(2017,6,28), y: 31 },
+			{ x: new Date(2017,6,29), y: 30 },
+			{ x: new Date(2017,6,30), y: 29 }
+		]
+	},
+	{
+		name: "Martha Vineyard",
+		type: "spline",
+		yValueFormatString: "#0.## °C",
+		showInLegend: true,
+		dataPoints: [
+			{ x: new Date(2017,6,24), y: 20 },
+			{ x: new Date(2017,6,25), y: 20 },
+			{ x: new Date(2017,6,26), y: 25 },
+			{ x: new Date(2017,6,27), y: 25 },
+			{ x: new Date(2017,6,28), y: 25 },
+			{ x: new Date(2017,6,29), y: 25 },
+			{ x: new Date(2017,6,30), y: 25 }
+		]
+	},
+	{
+		name: "Nantucket",
+		type: "spline",
+		yValueFormatString: "#0.## °C",
+		showInLegend: true,
+		dataPoints: [
+			{ x: new Date(2017,6,24), y: 22 },
+			{ x: new Date(2017,6,25), y: 19 },
+			{ x: new Date(2017,6,26), y: 23 },
+			{ x: new Date(2017,6,27), y: 24 },
+			{ x: new Date(2017,6,28), y: 24 },
+			{ x: new Date(2017,6,29), y: 23 },
+			{ x: new Date(2017,6,30), y: 23 }
+		]
+	}]
 });
 chart.render();
 
@@ -176,5 +188,14 @@ function toggleDataSeries(e){
 
 }
 </script>
-
-
+<?php 
+                        $x=0;
+                        $stationNameNummerDruck="stationDruck$x";
+                        $stationNameDruck=core::$view->$stationNameNummerDruck;
+                        foreach($stationNameDruck as $delta){
+                        $hugo=$delta['stationsname'];
+                        echo("$hugo");
+                        }
+                        $d=$d+1;
+                        $e=3+4;
+?>

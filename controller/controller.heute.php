@@ -29,37 +29,46 @@ If ($dieStation<>""){
         Core::$view->$stationsNummer=$stat;
 
         //Übergabe der Temp Werte
-        $sqltemp="select * from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $sqltemp="select temp20, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
         $tempheute=$pdo->query($sqltemp);
         $HeuteTempNummer="heuteTemp$i";
         Core::$view->$HeuteTempNummer=$tempheute;
         
         //Übergabe des Luftdrucks
-        $sqldruck="";
+        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
         $druckheute=$pdo->query($sqldruck);
         $HeuteDruckNummer="heuteDruck$i";
         Core::$view->$HeuteDruckNummer=$druckheute;
         //Ende Übergabe des Luftdrucks
 
         //Übergabe Luftfeuchtigkeit
-        $sqlfeuchte="";
+        $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
         $feuchteheute=$pdo->query($sqlfeuchte);
         $HeuteFeuchteNummer="heuteFeuchte$i";
         Core::$view->$HeuteFeuchteNummer=$feuchteheute;
         //Ende Übergabe der Luftfeuchtigkeit
         
         //Übergabe des Taupunktes
-        $sqltaupunkt="";
+        $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
         $taupunktheute=$pdo->query($sqltaupunkt);
         $HeuteTaupunktNummer="heuteTaupunkt$i";
         Core::$view->$HeuteTaupunktNummer=$drucktaupunkt;
         //Ende Übergabe des Taupunkt
 
-        //Übergabe  des Stationsnamen
-        $sqlStationName="select stationsname from Stationen where id=$stat";
-        $stationName=$pdo->query($sqlStationName);
-        $stationNameNummer="stationName$i";
-        Core::$view->$stationNameNummer=$stationName;
+        //Übergabe  des Stationsnamen an TempDiagramm
+        $sqlStationTemp="select stationsname from Stationen where id=$stat";
+        $stationTemp=$pdo->query($sqlStationTemp);
+        $stationNameTemp="stationTemp$i";
+        Core::$view->$stationNameTemp=$stationTemp;
+        //Ende Übergabe Stationsnamen
+        
+        //Übergabe des Stationsnamen an DruckDiagramm
+        $sqlStationDruck="select stationsname from Stationen where id=$stat";
+        $stationDruck=$pdo->query($sqlStationDruck);
+        $stationNameDruck="stationDruck$i";
+        $stationDruck=$stationName;
+        Core::$view->$stationNameDruck=$stationDruck;
+        //Ende Übergabe des Stationsnamen
 
         $i++;
     }
