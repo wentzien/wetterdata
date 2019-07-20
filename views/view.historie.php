@@ -3,7 +3,7 @@
 
 <!--Header-->
 <div data-role="header">
-        <h1>Der heutige Tag</h1>
+        <h1>Historische Wetterdaten</h1>
 </div>
 <br>
 
