@@ -61,7 +61,7 @@
 window.onload = function () {
 
 //Temperaturchart
-var chart = new CanvasJS.Chart("chartContainerTemp", {
+var chart1 = new CanvasJS.Chart("chartContainerTemp", {
 	animationEnabled: true,
         zoomEnabled: true,
 //	title:{
@@ -78,7 +78,7 @@ var chart = new CanvasJS.Chart("chartContainerTemp", {
 	legend:{
 		cursor: "pointer",
 		fontSize: 16,
-		itemclick: toggleDataSeries
+		itemclick: toggleDataSeriesTemp
 	},
 	toolTip:{
 		shared: true
@@ -117,10 +117,20 @@ var chart = new CanvasJS.Chart("chartContainerTemp", {
             ?>
     ]
 });
-chart.render();
+chart1.render();
+
+function toggleDataSeriesTemp(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart1.render();
+}
 
 //Luftdruck
-var chart = new CanvasJS.Chart("chartContainerDruck", {
+var chart2 = new CanvasJS.Chart("chartContainerDruck", {
 	animationEnabled: true,
         zoomEnabled: true,
 //	title:{
@@ -137,7 +147,7 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
 	legend:{
 		cursor: "pointer",
 		fontSize: 16,
-		itemclick: toggleDataSeries
+		itemclick: toggleDataSeriesDruck
 	},
 	toolTip:{
 		shared: true
@@ -174,10 +184,20 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
             ?>
     ]
 });
-chart.render();
+chart2.render();
+
+function toggleDataSeriesDruck(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart2.render();
+}
 
 //Luftfeuchtigkeit
-var chart = new CanvasJS.Chart("chartContainerFeuchte", {
+var chart3 = new CanvasJS.Chart("chartContainerFeuchte", {
 	animationEnabled: true,
         zoomEnabled: true,
 //	title:{
@@ -194,7 +214,7 @@ var chart = new CanvasJS.Chart("chartContainerFeuchte", {
 	legend:{
 		cursor: "pointer",
 		fontSize: 16,
-		itemclick: toggleDataSeries
+		itemclick: toggleDataSeriesFeuchte
 	},
 	toolTip:{
 		shared: true
@@ -231,10 +251,20 @@ var chart = new CanvasJS.Chart("chartContainerFeuchte", {
             ?>
     ]
 });
-chart.render();
+chart3.render();
+
+function toggleDataSeriesFeuchte(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart3.render();
+}
 
 //Taupunkttemperatur
-var chart = new CanvasJS.Chart("chartContainerTau", {
+var chart4 = new CanvasJS.Chart("chartContainerTau", {
 	animationEnabled: true,
         zoomEnabled: true,
 //	title:{
@@ -251,7 +281,7 @@ var chart = new CanvasJS.Chart("chartContainerTau", {
 	legend:{
 		cursor: "pointer",
 		fontSize: 16,
-		itemclick: toggleDataSeries
+		itemclick: toggleDataSeriesTau
 	},
 	toolTip:{
 		shared: true
@@ -288,17 +318,16 @@ var chart = new CanvasJS.Chart("chartContainerTau", {
             ?>
     ]
 });
-chart.render();
+chart4.render();
 
-function toggleDataSeries(e){
+function toggleDataSeriesTau(e){
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
 		e.dataSeries.visible = false;
 	}
 	else{
 		e.dataSeries.visible = true;
 	}
-	chart.render();
+	chart4.render();
 }
-
 }
 </script>
