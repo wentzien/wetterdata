@@ -37,11 +37,18 @@
 </div>
 <div id="chartContainerDruck" style="height: 370px; width: 100%;"></div>
 
+<!--Luftfeuchtigkeit-->
+
+<div data-role="header" data-theme="b">
+    <h1>Relative Luftfeuchtigkeit</h1>
+</div>
+<div id="chartContainerFeuchte" style="height: 370px; width: 100%;"></div>
+
 <!--Footer-->
 
-<!--<div data-role="footer">
+<div data-role="footer">
     <h4>Powered by Hochschule Pforzheim</h4>
-</div>-->
+</div>
 
 <script>
 window.onload = function () {
@@ -79,7 +86,6 @@ var chart = new CanvasJS.Chart("chartContainerTemp", {
                         $row1="";
                         $stationNameTemp="stationTemp$x";
                         $stationTemp=core::$view->$stationNameTemp;
-//                        ${$stationNameNummer}=$stationName;
                         foreach($stationTemp as $row1){
                         echo($row1['stationsname']);
                         }   
@@ -161,6 +167,63 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
 });
 chart.render();
 
+//Luftfeuchtigkeit
+var chart = new CanvasJS.Chart("chartContainerFeuchte", {
+	animationEnabled: true,
+//	title:{
+//		text: "Das heutige Wetter"
+//	},
+	axisX: {
+		valueFormatString: "HH:mm"
+	},
+	axisY: {
+		title: "relative Feuchte (in %)",
+		includeZero: false,
+		suffix: " %"
+	},
+	legend:{
+		cursor: "pointer",
+		fontSize: 16,
+		itemclick: toggleDataSeries
+	},
+	toolTip:{
+		shared: true
+	},
+	data: [
+            <?php 
+            for($x=0; $x<=$length; $x++){
+            echo('{
+		name: "');
+                        //Ausgabe des Stationsnamen
+                        $row1="";
+                        $stationNameFeuchte="stationFeuchte$x";
+                        $stationFeuchte=core::$view->$stationNameFeuchte;
+                        foreach($stationFeuchte as $row1){
+                        echo($row1['stationsname']);
+                        }   
+                        //Ende Ausgabe des Stationsnamen
+            echo('",
+		type: "column",
+		yValueFormatString: "#0.## %",
+		showInLegend: true,
+		dataPoints: ['); 
+                        //Ausgabe der Temp Werte
+                        $row2="";
+                        $heuteFeuchteNummer="heuteFeuchte$x";
+                        $heuteFeuchte=core::$view->$heuteFeuchteNummer;
+                        foreach ($heuteFeuchte as $row2){
+                        echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['feuchte']." },\n");
+                        }
+                        //Ende der Ausgabe der Temp Werte
+            echo(']
+            },'); 
+            }
+            ?>
+    ]
+});
+chart.render();
+
+
 function toggleDataSeries(e){
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
 		e.dataSeries.visible = false;
@@ -173,14 +236,3 @@ function toggleDataSeries(e){
 
 }
 </script>
-//<?php 
-//                        $x=0;
-//                        $stationNameNummerDruck="stationDruck$x";
-//                        $stationNameDruck=core::$view->$stationNameNummerDruck;
-//                        foreach($stationNameDruck as $delta){
-//                        $hugo=$delta['stationsname'];
-//                        echo("$hugo");
-//                        }
-//                        $d=$d+1;
-//                        $e=3+4;
-//?>
