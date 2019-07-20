@@ -25,8 +25,8 @@ $pdo->query($SQLcreatehom);
 $SQLtoptentemp = "(SELECT * FROM Temperatur LEFT JOIN Stationen ON Stationen.id=Temperatur.station) ORDER BY temp5 DESC Limit 10";
 $listtemp=$pdo->query($SQLtoptentemp);
 Core::$view->ausgewStat=$ausgewStat;
-Core::$view->list=$listtemp;  
+Core::$view->listtemp=$listtemp;  
 
 $SQLtoptenpress = "(SELECT * FROM Temperatur LEFT JOIN Stationen ON Stationen.id=Temperatur.station) ORDER BY Luftdruck DESC Limit 10";
 $listpress=$pdo->query($SQLtoptenpress);
-Core::$view->list=$listpress; 
+Core::$view->listpress=$listpress; 

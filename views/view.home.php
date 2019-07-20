@@ -16,41 +16,9 @@ if($user->vorname!=""){
 
 
 <label><i><?php echo($eingeloggt) ?></i></label>
-
 <center><label><h1><?php echo($willkommen) ?></h1></label></center>
 <center><h3><?php echo($loggedichein) ?></h3></center>
-
-
-<!-- <form action="?task=home" method="post">
-Lege deine Lieblingswetterstation fest:
-<select name="ausgewStation">-->
-<?php
-//$ausgewStat=core::$view->ausgewStat;
-//foreach ($ausgewStat as $as){
-//echo("<option value=".$as['id']." >".$as['stationsname']."</option>\n");
-//}
-//?>
-
-
-
-<!--</select>
-<input type="submit" name="anzeigen" value="Anzeigen">
-<br>
-<div>    
-<label> Ausgewählte Station als Heimat festlegen:</label>
-<input type="checkbox" name="saveasfav" value="ON"/>
-<br>
-</div>-->
-
-<?php 
-//echo("Die ID der ausgewählten Station: ".$dieStation=core::$view->dieStation);
-//$homewetter=core::$user->homewetter;
-//echo("Aktuell ausgewählte Station: ".$homewetter);
-//$i=5;
-//?>
-
-
-    <center><h1>Rekordwerte für Deutschland</h1>
+<center><h1>Rekordwerte für Deutschland</h1>
 	
 <div data-role="tabs" id="tabs">
   <div data-role="navbar">
@@ -82,11 +50,12 @@ Lege deine Lieblingswetterstation fest:
         <td><?=$i?></td>
         <td><?=$item['stationsname']?></td>
         <td><?=$item['temp5']?></td>
-        <td><?=date(DATE_RFC850,$item['ts'])?></td>
-        <th data-priotity="1">
+        <td><?=date(DATE_RFC850,$item['ts'])?></td>        
       </tr>
-    </table>
-  <?php }?>
+    
+  <?php } ?>
+      </tbody>
+      </table>
 </div>
   <div id="two" class="ui-body-d ui-content">
 <h3> Die 10 höchsten Luftdruckwerte die in Deutschland gemessen wurden</h3>
@@ -102,8 +71,8 @@ Lege deine Lieblingswetterstation fest:
   </thead>
   <tbody>
   <?php
-//Angreifer wartend  
-/* @var $itemAw Spiel */
+
+  $i=0;
   foreach($listpress as $item){
       $i++;
    ?>
@@ -112,13 +81,14 @@ Lege deine Lieblingswetterstation fest:
           <td><?=$item['stationsname']?></td>
           <td><?=$item['Luftdruck']?></td>
           <td><?=date(DATE_RFC850,$item['ts'])?></td>
-          <th data-priotity="1">
-    </tr>
+          </tr>
+    
+    <?php } ?>
+    </tbody>
     </table>
-    <?php}?>
   </div>
     <div id="three" class="ui-body-d ui-content">
         
           </div>
 </div>
-       
+           
