@@ -68,6 +68,13 @@ If ($dieStation<>""){
         $stationNameDruck="stationDruck$i";
         Core::$view->$stationNameDruck=$stationDruck;
         //Ende Übergabe des Stationsnamen
+        
+        //Übergabe des Stationsnamen an DruckDiagramm
+        $sqlStationFeuchte="select stationsname from Stationen where id=$stat";
+        $stationFeuchte=$pdo->query($sqlStationFeuchte);
+        $stationNameFeuchte="stationFeuchte$i";
+        Core::$view->$stationNameFeuchte=$stationFeuchte;
+        //Ende Übergabe des Stationsnamen
 
         $i++;
     }
