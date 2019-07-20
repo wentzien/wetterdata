@@ -52,7 +52,7 @@ If ($dieStation<>""){
         $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
         $taupunktheute=$pdo->query($sqltaupunkt);
         $HeuteTaupunktNummer="heuteTaupunkt$i";
-        Core::$view->$HeuteTaupunktNummer=$drucktaupunkt;
+        Core::$view->$HeuteTaupunktNummer=$taupunktheute;
         //Ende Übergabe des Taupunkt
 
         //Übergabe  des Stationsnamen an TempDiagramm
@@ -69,11 +69,18 @@ If ($dieStation<>""){
         Core::$view->$stationNameDruck=$stationDruck;
         //Ende Übergabe des Stationsnamen
         
-        //Übergabe des Stationsnamen an DruckDiagramm
+        //Übergabe des Stationsnamen an FeuchteDiagramm
         $sqlStationFeuchte="select stationsname from Stationen where id=$stat";
         $stationFeuchte=$pdo->query($sqlStationFeuchte);
         $stationNameFeuchte="stationFeuchte$i";
         Core::$view->$stationNameFeuchte=$stationFeuchte;
+        //Ende Übergabe des Stationsnamen
+        
+        //Übergabe des Stationsnamen an TauDiagramm
+        $sqlStationTau="select stationsname from Stationen where id=$stat";
+        $stationTau=$pdo->query($sqlStationTau);
+        $stationNameTau="stationTau$i";
+        Core::$view->$stationNameTau=$stationTau;
         //Ende Übergabe des Stationsnamen
 
         $i++;

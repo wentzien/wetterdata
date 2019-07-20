@@ -44,6 +44,13 @@
 </div>
 <div id="chartContainerFeuchte" style="height: 370px; width: 100%;"></div>
 
+<!--Taupunkttemperatur-->
+
+<div data-role="header" data-theme="b">
+    <h1>Taupunkttemperatur</h1>
+</div>
+<div id="chartContainerTau" style="height: 370px; width: 100%;"></div>
+
 <!--Footer-->
 
 <div data-role="footer">
@@ -226,6 +233,62 @@ var chart = new CanvasJS.Chart("chartContainerFeuchte", {
 });
 chart.render();
 
+//Taupunkttemperatur
+var chart = new CanvasJS.Chart("chartContainerTau", {
+	animationEnabled: true,
+        zoomEnabled: true,
+//	title:{
+//		text: "Das heutige Wetter"
+//	},
+	axisX: {
+		valueFormatString: "HH:mm"
+	},
+	axisY: {
+		title: "Taupunkttemperatur (in °C)",
+		includeZero: false,
+		suffix: " °C"
+	},
+	legend:{
+		cursor: "pointer",
+		fontSize: 16,
+		itemclick: toggleDataSeries
+	},
+	toolTip:{
+		shared: true
+	},
+	data: [
+            <?php 
+            for($x=0; $x<=$length; $x++){
+            echo('{
+		name: "');
+                        //Ausgabe des Stationsnamen
+                        $row1="";
+                        $stationNameTau="stationTau$x";
+                        $stationTau=core::$view->$stationNameTau;
+                        foreach($stationTau as $row1){
+                        echo($row1['stationsname']);
+                        }   
+                        //Ende Ausgabe des Stationsnamen
+            echo('",
+		type: "spline",
+		yValueFormatString: "#0.## °C",
+		showInLegend: true,
+		dataPoints: ['); 
+                        //Ausgabe der Temp Werte
+                        $row2="";
+                        $heuteTauNummer="heuteTaupunkt$x";
+                        $heuteTau=core::$view->$heuteTauNummer;
+                        foreach ($heuteTau as $row2){
+                        echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['taupunkt']." },\n");
+                        }
+                        //Ende der Ausgabe der Temp Werte
+            echo(']
+            },'); 
+            }
+            ?>
+    ]
+});
+chart.render();
 
 function toggleDataSeries(e){
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
