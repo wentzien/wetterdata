@@ -22,7 +22,11 @@ $Statide=filter_input(INPUT_POST,"ausgewStation",FILTER_SANITIZE_STRING);
 $SQLcreatehom = "Update User SET homewetter =$Statide WHERE m_oid=$schluessel";
 $pdo->query($SQLcreatehom);
 }
-
+$SQLtoptentemp = "(SELECT * FROM Temperatur LEFT JOIN Stationen ON Stationen.id=Temperatur.station) ORDER BY temp5 DESC Limit 10";
+$listtemp=$pdo->query($SQLtoptentemp);
 Core::$view->ausgewStat=$ausgewStat;
+Core::$view->list=$listtemp;  
 
-  
+$SQLtoptenpress = "(SELECT * FROM Temperatur LEFT JOIN Stationen ON Stationen.id=Temperatur.station) ORDER BY Luftdruck DESC Limit 10";
+$listpress=$pdo->query($SQLtoptenpress);
+Core::$view->list=$listpress; 
