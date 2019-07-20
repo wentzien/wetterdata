@@ -44,21 +44,21 @@ foreach($dieStation as $stat){
     Core::$view->$HeuteTempNummer=$tempheute;
 
     //Übergabe des Luftdrucks
-    $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+    $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
     $druckheute=$pdo->query($sqldruck);
     $HeuteDruckNummer="heuteDruck$i";
     Core::$view->$HeuteDruckNummer=$druckheute;
     //Ende Übergabe des Luftdrucks
 
     //Übergabe Luftfeuchtigkeit
-    $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+    $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND feuchte>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
     $feuchteheute=$pdo->query($sqlfeuchte);
     $HeuteFeuchteNummer="heuteFeuchte$i";
     Core::$view->$HeuteFeuchteNummer=$feuchteheute;
     //Ende Übergabe der Luftfeuchtigkeit
 
     //Übergabe des Taupunktes
-    $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+    $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND taupunkt>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
     $taupunktheute=$pdo->query($sqltaupunkt);
     $HeuteTaupunktNummer="heuteTaupunkt$i";
     Core::$view->$HeuteTaupunktNummer=$taupunktheute;
