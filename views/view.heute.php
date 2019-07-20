@@ -115,9 +115,9 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
 		valueFormatString: "HH:mm"
 	},
 	axisY: {
-		title: "Temperature (in °C)",
+		title: "Luftdruck (in hPa)",
 		includeZero: false,
-		suffix: " °C"
+		suffix: " hPa"
 	},
 	legend:{
 		cursor: "pointer",
@@ -142,7 +142,7 @@ var chart = new CanvasJS.Chart("chartContainerDruck", {
                         //Ende Ausgabe des Stationsnamen
             echo('",
 		type: "spline",
-		yValueFormatString: "#0.## °C",
+		yValueFormatString: "#0.## hPa",
 		showInLegend: true,
 		dataPoints: ['); 
                         //Ausgabe der Temp Werte

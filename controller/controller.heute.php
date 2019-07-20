@@ -66,7 +66,6 @@ If ($dieStation<>""){
         $sqlStationDruck="select stationsname from Stationen where id=$stat";
         $stationDruck=$pdo->query($sqlStationDruck);
         $stationNameDruck="stationDruck$i";
-        $stationDruck=$stationName;
         Core::$view->$stationNameDruck=$stationDruck;
         //Ende Übergabe des Stationsnamen
 
