@@ -56,6 +56,7 @@ window.onload = function () {
 //Temperaturchart
 var chart = new CanvasJS.Chart("chartContainerTemp", {
 	animationEnabled: true,
+        zoomEnabled: true,
 //	title:{
 //		text: "Das heutige Wetter"
 //	},
@@ -114,6 +115,7 @@ chart.render();
 //Luftdruck
 var chart = new CanvasJS.Chart("chartContainerDruck", {
 	animationEnabled: true,
+        zoomEnabled: true,
 //	title:{
 //		text: "Das heutige Wetter"
 //	},
@@ -170,6 +172,7 @@ chart.render();
 //Luftfeuchtigkeit
 var chart = new CanvasJS.Chart("chartContainerFeuchte", {
 	animationEnabled: true,
+        zoomEnabled: true,
 //	title:{
 //		text: "Das heutige Wetter"
 //	},
