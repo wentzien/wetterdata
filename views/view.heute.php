@@ -28,28 +28,28 @@
 <div data-role="header" data-theme="b">
     <h1>Temperatur</h1>
 </div>
-<div id="chartContainerTemp" style="height: 370px; width: 100%;"></div>
+<div id="chartContainerTemp" style="height: 370px; width: 100%;"></div><br>
 
 <!--Luftdruckanzeige-->
 
 <div data-role="header" data-theme="b">
     <h1>Luftdruck</h1>
 </div>
-<div id="chartContainerDruck" style="height: 370px; width: 100%;"></div>
+<div id="chartContainerDruck" style="height: 370px; width: 100%;"></div><br>
 
 <!--Luftfeuchtigkeit-->
 
 <div data-role="header" data-theme="b">
     <h1>Relative Luftfeuchtigkeit</h1>
 </div>
-<div id="chartContainerFeuchte" style="height: 370px; width: 100%;"></div>
+<div id="chartContainerFeuchte" style="height: 370px; width: 100%;"></div><br>
 
 <!--Taupunkttemperatur-->
 
 <div data-role="header" data-theme="b">
     <h1>Taupunkttemperatur</h1>
 </div>
-<div id="chartContainerTau" style="height: 370px; width: 100%;"></div>
+<div id="chartContainerTau" style="height: 370px; width: 100%;"></div><br>
 
 <!--Footer-->
 
