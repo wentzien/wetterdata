@@ -35,7 +35,7 @@ If ($dieStation<>""){
         Core::$view->$HeuteTempNummer=$tempheute;
         
         //Übergabe des Luftdrucks
-        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND AND Luftdruck>-999 AND ts like '$datum%' order by ts asc";
         $druckheute=$pdo->query($sqldruck);
         $HeuteDruckNummer="heuteDruck$i";
         Core::$view->$HeuteDruckNummer=$druckheute;
