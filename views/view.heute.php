@@ -2,10 +2,85 @@
 <script src="canvasjs/canvasjs.min.js"></script>
 
 <!--Header-->
-<div data-role="header">
-        <h1>Der heutige Tag</h1>
+<div class="ui-corner-all custom-corners">
+  <div class="ui-bar ui-bar-a">
+    <h3>Der heutige Tag</h3>
+  </div>
+    <center>
+        <div class="ui-body ui-body-a">
+          <table>
+              <tr>
+                <th>Eine Kurzübersicht:</th>
+                <!--Stationsnamen in die Tabelle schreiben-->
+                
+                <?php
+                    $length=core::$view->length;
+                    for($t=0; $t<$length; $t++){
+                    $row="";
+                    $stationNameTabelle="stationTabelle$t";
+                    $stationTabelle=core::$view->$stationNameTabelle;
+                    foreach($stationTabelle as $row){
+                    $stationNT=$row['stationsname'];
+                    echo("<th>$stationNT</th><th></th>");
+                    }
+                    }
+                ?>
+              </tr>
+              <tr>
+                <td>Aktuellster Temperaturwert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameAktTemp="aktTemp$t";
+                    $AktTemp=core::$view->$NameAktTemp;
+                    foreach($AktTemp as $row){
+                    $akttemp=$row['temp20'];
+                    $akttempZeit=$row['ts'];
+                    $akttempZeitrest = substr($akttempZeit, -8);
+                    echo("<th>$akttemp °C</th><th>$akttempZeitrest</th>");
+                    }
+                    }
+                ?>
+               </tr>
+               <tr>
+                <td>Temperaturdurchschnitt</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameAvgTemp="avgTemp$t";
+                    $AvgTemp=core::$view->$NameAvgTemp;
+                    foreach($AvgTemp as $row){
+                    $avgtemp=$row['AVG(temp20)'];
+                    $avgtempRound=round( $avgtemp, 2, PHP_ROUND_HALF_UP);
+                    echo("<th>$avgtempRound °C</th><th>-</th>");
+                    }
+                    }
+                ?>
+               </tr>
+               <tr>
+                <td>Max-Temperatur</td>
+                <td>Wert</td>
+               </tr>
+               <tr>
+                <td>Min-Temperatur</td>
+                <td>Wert</td>
+               </tr>
+               <tr>
+                <td>Durchschnitts-Luftdruck</td>
+                <td>Wert</td>
+               </tr>
+               <tr>
+                <td>Durchschnitts-Luftfeuchtigkeit</td>
+                <td>Wert</td>
+               </tr>
+               <tr>
+                <td>Durchschnitts-Taupunkttemperatur</td>
+                <td>Wert</td>
+               </tr>
+            </table>
+        </div>
+    </center>
 </div>
-<br>
 
 <!--Ortsauswahl-->
 
@@ -84,8 +159,7 @@ var chart1 = new CanvasJS.Chart("chartContainerTemp", {
 		shared: true
 	},
 	data: [
-            <?php 
-            $length=core::$view->length;
+            <?php
             $length=$length-1;
             for($x=0; $x<=$length; $x++){
             echo('{

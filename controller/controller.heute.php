@@ -35,7 +35,7 @@ If ($dieStation<>""){
         Core::$view->$HeuteTempNummer=$tempheute;
         
         //Übergabe des Luftdrucks
-        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND AND Luftdruck>-999 AND ts like '$datum%' order by ts asc";
+        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts like '$datum%' order by ts asc";
         $druckheute=$pdo->query($sqldruck);
         $HeuteDruckNummer="heuteDruck$i";
         Core::$view->$HeuteDruckNummer=$druckheute;
@@ -82,6 +82,31 @@ If ($dieStation<>""){
         $stationNameTau="stationTau$i";
         Core::$view->$stationNameTau=$stationTau;
         //Ende Übergabe des Stationsnamen
+        
+        //----------------------------------------------------------------------
+        //Tabellen-Daten
+
+        //Stationsnamen
+        $sqlStationTabelle="select stationsname from Stationen where id=$stat";
+        $stationTabelle=$pdo->query($sqlStationTabelle);
+        $stationNameTabelle="stationTabelle$i";
+        Core::$view->$stationNameTabelle=$stationTabelle;
+        //Ende Stationsname
+        
+        //aktuellste Temp Wert
+        $sqlAktTemp="select temp20, ts from Temperatur where station=$stat AND ts like '$datum%' order by ts desc limit 1";
+        $AktTempheute=$pdo->query($sqlAktTemp);
+        $HeuteAktTempNummer="aktTemp$i";
+        Core::$view->$HeuteAktTempNummer=$AktTempheute;
+        //Ende aktuellste Temp Wert
+        
+        //Durchschnittstemperatur
+        $sqlAvgTemp="select AVG(temp20) from Temperatur where station=$stat AND ts like '$datum%'";
+        $AvgTempheute=$pdo->query($sqlAvgTemp);
+        $HeuteAvgTempNummer="avgTemp$i";
+        Core::$view->$HeuteAvgTempNummer=$AvgTempheute;
+        //Ende Durchschnittstemperatur
+        
 
         $i++;
     }
