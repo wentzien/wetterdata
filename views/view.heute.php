@@ -59,23 +59,85 @@
                </tr>
                <tr>
                 <td>Max-Temperatur</td>
-                <td>Wert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameMaxTemp="maxTemp$t";
+                    $MaxTemp=core::$view->$NameMaxTemp;
+                    foreach($MaxTemp as $row){
+                    $maxtemp=$row['temp20'];
+                    $maxtempZeit=$row['ts'];
+                    $maxtempZeitrest = substr($maxtempZeit, -8);
+                    $maxtempRound=round( $maxtemp, 2, PHP_ROUND_HALF_UP);
+                    echo("<td>$maxtempRound °C</td><td>$maxtempZeitrest</td>");
+                    }
+                    }
+                ?>
                </tr>
                <tr>
                 <td>Min-Temperatur</td>
-                <td>Wert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameMinTemp="minTemp$t";
+                    $MinTemp=core::$view->$NameMinTemp;
+                    foreach($MinTemp as $row){
+                    $mintemp=$row['temp20'];
+                    $mintempZeit=$row['ts'];
+                    $mintempZeitrest = substr($mintempZeit, -8);
+                    $mintempRound=round( $mintemp, 2, PHP_ROUND_HALF_UP);
+                    echo("<td>$mintempRound °C</td><td>$mintempZeitrest</td>");
+                    }
+                    }
+                ?>
                </tr>
                <tr>
                 <td>Durchschnitts-Luftdruck</td>
-                <td>Wert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameAvgDruck="avgDruck$t";
+                    $AvgDruck=core::$view->$NameAvgDruck;
+                    foreach($AvgDruck as $row){
+                    $avgdruck=$row['AVG(Luftdruck)'];
+                    $avgdruckRound=round( $avgdruck, 2, PHP_ROUND_HALF_UP);
+                    if($avgdruckRound<=-999){
+                        $avgdruckRound="N/A";
+                    }
+                    echo("<td>$avgdruckRound hPa</td><td>-</td>");
+                    }
+                    }
+                ?>
                </tr>
                <tr>
                 <td>Durchschnitts-Luftfeuchtigkeit</td>
-                <td>Wert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameAvgFeuchte="avgFeuchte$t";
+                    $AvgFeuchte=core::$view->$NameAvgFeuchte;
+                    foreach($AvgFeuchte as $row){
+                    $avgfeuchte=$row['AVG(feuchte)'];
+                    $avgfeuchteRound=round( $avgfeuchte, 2, PHP_ROUND_HALF_UP);
+                    echo("<td>$avgfeuchteRound %</td><td>-</td>");
+                    }
+                    }
+                ?>
                </tr>
                <tr>
                 <td>Durchschnitts-Taupunkttemperatur</td>
-                <td>Wert</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameAvgTau="avgTau$t";
+                    $AvgTau=core::$view->$NameAvgTau;
+                    foreach($AvgTau as $row){
+                    $avgtau=$row['AVG(taupunkt)'];
+                    $avgtauRound=round( $avgtau, 2, PHP_ROUND_HALF_UP);
+                    echo("<td>$avgtauRound °C</td><td>-</td>");
+                    }
+                    }
+                ?>
                </tr>
             </table>
         </div>

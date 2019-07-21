@@ -107,6 +107,41 @@ If ($dieStation<>""){
         Core::$view->$HeuteAvgTempNummer=$AvgTempheute;
         //Ende Durchschnittstemperatur
         
+        //Max-Temperatur
+        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%'";
+        $MaxTempheute=$pdo->query($sqlMaxTemp);
+        $HeuteMaxTempNummer="maxTemp$i";
+        Core::$view->$HeuteMaxTempNummer=$MaxTempheute;
+        //Ende Max-Temperatur
+        
+        //Min-Temperatur
+        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%'";
+        $MinTempheute=$pdo->query($sqlMinTemp);
+        $HeuteMinTempNummer="minTemp$i";
+        Core::$view->$HeuteMinTempNummer=$MinTempheute;
+        //Ende Max-Temperatur
+        
+        //Durchschnitts Luftdruck
+        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where station=$stat AND ts like '$datum%'";
+        $AvgDruckheute=$pdo->query($sqlAvgDruck);
+        $HeuteAvgDruckNummer="avgDruck$i";
+        Core::$view->$HeuteAvgDruckNummer=$AvgDruckheute;
+        //Ende Durchschnitts Luftdruck
+        
+        //Durchschnitts Luftfeuchtigkeit
+        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where station=$stat AND ts like '$datum%'";
+        $AvgFeuchteheute=$pdo->query($sqlAvgFeuchte);
+        $HeuteAvgFeuchteNummer="avgFeuchte$i";
+        Core::$view->$HeuteAvgFeuchteNummer=$AvgFeuchteheute;
+        //Ende Durchschnitts Luftfeuchtigkeit
+        
+        //Durchschnitts Taupunkt
+        $sqlAvgTau="select AVG(taupunkt) from Temperatur where station=$stat AND ts like '$datum%'";
+        $AvgTauheute=$pdo->query($sqlAvgTau);
+        $HeuteAvgTauNummer="avgTau$i";
+        Core::$view->$HeuteAvgTauNummer=$AvgTauheute;
+        //Ende Durchschnitts Taupunkt
+
 
         $i++;
     }
