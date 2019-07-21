@@ -37,7 +37,7 @@
                     $akttemp=$row['temp20'];
                     $akttempZeit=$row['ts'];
                     $akttempZeitrest = substr($akttempZeit, -8);
-                    echo("<th>$akttemp °C</th><th>$akttempZeitrest</th>");
+                    echo("<td>$akttemp °C</td><td>$akttempZeitrest</td>");
                     }
                     }
                 ?>
@@ -52,7 +52,7 @@
                     foreach($AvgTemp as $row){
                     $avgtemp=$row['AVG(temp20)'];
                     $avgtempRound=round( $avgtemp, 2, PHP_ROUND_HALF_UP);
-                    echo("<th>$avgtempRound °C</th><th>-</th>");
+                    echo("<td>$avgtempRound °C</td><td>-</td>");
                     }
                     }
                 ?>
