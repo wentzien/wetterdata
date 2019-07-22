@@ -108,14 +108,14 @@ If ($dieStation<>""){
         //Ende Durchschnittstemperatur
         
         //Max-Temperatur
-        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%'";
+        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%' limit 1";
         $MaxTempheute=$pdo->query($sqlMaxTemp);
         $HeuteMaxTempNummer="maxTemp$i";
         Core::$view->$HeuteMaxTempNummer=$MaxTempheute;
         //Ende Max-Temperatur
         
         //Min-Temperatur
-        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%'";
+        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%' limit 1";
         $MinTempheute=$pdo->query($sqlMinTemp);
         $HeuteMinTempNummer="minTemp$i";
         Core::$view->$HeuteMinTempNummer=$MinTempheute;
