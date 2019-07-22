@@ -6,7 +6,7 @@ $timestamp = time();
 $datum = date("Y-m-d",$timestamp);
 $pdo=Core::$pdo;
 $dieStation=$_POST['ausgewStation'];
-//Wurden Stationswerte übergenen?, wenn nicht soll der Nuter darauf hingwiesen werden dass er eine Station auswähelen soll
+//Wurden Stationswerte übergeben?, wenn nicht soll der Nutzer darauf hingwiesen werden dass er eine Station auswähelen soll
 If ($dieStation<>""){
     $taskerkenner=$_POST['taskerkenner'];
     if($taskerkenner=="favorit"){

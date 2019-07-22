@@ -4,33 +4,31 @@ $listtemp=Core::$view->listtemp;
 $listpress=Core::$view->listpress;
 $listhumi=Core::$view->listhumi;
 
-$listalldataqualthreepf=Core::$view->listalldataqualthreepf;
-$listalldataqual3ml=Core::$view->listalldataqual3ml;
 
-$listalldatapf=Core::$view->listalldatapf;
-$listalldataml=Core::$view->listalldataml;
+$listuserfavsname=Core::$view->listuserfavsname;
 
-$listmindatepf=Core::$view->listmindatepf;
-$listmindateml=Core::$view->listmindateml;
+$listalldataqualthree=Core::$view->listalldataqualthree;
 
-$listmaxdateml=Core::$view->listmaxdateml;
-$listmaxdatepf=Core::$view->listmaxdatepf;
+$listalldata=Core::$view->listalldata;
 
 
+$listmindate=Core::$view->listmindate;
 
-$listalldatatempavg=Core::$view->listalldatatempavg;
 
-$listalldatatemp5avg=Core::$view->listalldatatemp5avg;
+$listmaxdate=Core::$view->listmaxdate;
 
-$listalldatahumiavg=Core::$view->listalldatahumiavg;
 
-$listalldataairavg=Core::$view->listalldataairavg;
+$listmissval=Core::$view->listmissval;
 
-$listalldatameltavg=Core::$view->listalldatameltavg;
+// Durschnittliche taupunkttemperatur
+$listdatameltavg=Core::$view->listdatameltavg;
 
-$listmissvalml=Core::$view->listmissvalml;
-$listmissvalpf=Core::$view->listmissvalpf;
-
+// Durschnittlicher Luftdruck
+$listdataairavg=Core::$view->listdataairavg;
+// Durschnittlicher Luftfeuchtigkeit
+$listdatahumiavg=Core::$view->listdatahumiavg;
+// Durschnittliche Temperatur
+$listdatatempavg=Core::$view->listdatatempavg;
 
 
 
@@ -122,7 +120,6 @@ if($user->vorname!=""){
     </tbody>
     </table>
 
-<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Wetterkarte" src=http://www.arcgis.com/apps/View/index.html?appid=323c65e055614461ad1d8c2bff1cd9a7"></iframe></div>
    <div id="set" title="Set Appointment" class="panel">
             <iframe src="https://www.w3schools.com"></iframe> 
     </div>  
@@ -170,61 +167,50 @@ if($user->vorname!=""){
         <div class="ui-body ui-body-a">
           <table>
               <tr>
-                <th>Eine Kurzübersicht:</th>
-                <!--Stationsnamen in die Tabelle schreiben-->
-                <th>Mühlacker</th>
-                <th></th>
-                <th>Pforzheim</th>
-                <th></th>
-                <th>Alle Stationen</th>
+                  <th>Vergleich unter Favoriten:</th>                  
+                  <th>Alle Stationen</th>
+                  <th></th>
+                  <?php                  
+                  foreach($listuserfavsname as $favs){
+                            $value=$favs;
+                            echo("<th>$value</th><th></th>");                      
+                  };
+                  ?>               
               </tr>
               <tr>
                 <td>Datensätze mit Qualitätsniveau 3</td>
                 <?php                
-                    foreach($listalldataqual3ml as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };
-                
-                
-                    foreach($listalldataqualthreepf as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };                    
+                    foreach($listalldataqualthree as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        };                        
+                        
+                    };          
  
                 ?>
                </tr>
                <tr>
-                <td>Datensätze</td>
-                
+                <td>Datensätze</td> 
                 <?php                
-                    
-                    foreach($listalldataml as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };
-                    
-                    foreach($listalldatapf as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };
-                ?>
-                
-                
+                    foreach($listalldata as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
                </tr>
                <tr>
-                <td>Fehlerhaft Datensätze</td>
-                
+                <td>Fehlerhafte Datensätze</td>
                 <?php                
-                    foreach($listmissvalml as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };                    
-                    foreach($listmissvalpf as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    }; 
-                ?>
+                    foreach($listmissval as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
               
                </tr>
                <tr>
@@ -233,48 +219,53 @@ if($user->vorname!=""){
                </tr>
                <tr>
                 <td>Durchschnitts-Luftdruck</td>
-                
                 <?php                
-                foreach($listalldataairavg as $row){ 
-                    $value=$row[0];
-                    echo("<th></th><th></th><th></th><th></th><th>$value</th><th></th>");                    
-                    };               
-                ?>
-                
+                    foreach($listdataairavg as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
                </tr>
                <tr>
                 <td>Durchschnitts-Luftfeuchtigkeit</td>
-                
                 <?php                
-                    foreach($listalldatahumiavg as $row){ 
-                        $value=$row[0];
-                        echo("<th></th><th></th><th></th><th></th><th>$value</th><th></th>");                    
-                    };               
-                ?>
+                    foreach($listdatahumiavg as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
                 
                </tr>
                <tr>
                 <td>Durchschnitts-Taupunkttemperatur</td>
                 
                 <?php                
-                    foreach($listalldatatempavg as $row){ 
-                        $value=$row[0];
-                        echo("<th></th><th></th><th></th><th></th><th>$value</th><th></th>");                    
-                    };               
-                ?>
+                    foreach($listdatameltavg as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
                 
                 
                </tr>
                
                 <tr>
-                <td>Durchschnitts-Taupunkttemperatur</td>
+                <td>Durchschnitts-temperatur</td>
                 
                 <?php                
-                    foreach($listalldatameltavg as $row){ 
-                        $value=$row[0];
-                        echo("<th></th><th></th><th></th><th></th><th>$value</th><th></th>");                    
-                    };               
-                ?>
+                    foreach($listdatatempavg as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?> 
                 
                 
                </tr>
@@ -284,32 +275,25 @@ if($user->vorname!=""){
                
                <tr>
                 <td>Ältester Datensatz</td>
-                
-                
-                <?php             
-                    foreach($listmindateml as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };
-                    foreach($listmindatepf as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };
-                ?>
-                
+                <?php                
+                    foreach($listmindate as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?>                 
                </tr>
                <tr>
                 <td>Jüngster Datensatz</td>
-                <?php
-                    foreach($listmaxdateml as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    }; 
-                    foreach($listmaxdatepf as $row){ 
-                        $value=$row[0];
-                        echo("<th>$value</th><th></th>");                    
-                    };  
-                ?>
+                <?php                
+                    foreach($listmaxdate as $row){
+                        foreach($row as $layer)
+                            {$value=$layer[0];
+                            echo("<th>$value</th><th></th>");
+                        }; 
+                    };   
+                ?>  
                </tr>
             </table>
         </div>
