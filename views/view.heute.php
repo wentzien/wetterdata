@@ -8,11 +8,10 @@
   </div>
     <center>
         <div class="ui-body ui-body-a">
-          <table>
+          <table class="ui-responsive" cellpadding="10">
               <tr>
                 <th>Eine Kurzübersicht:</th>
                 <!--Stationsnamen in die Tabelle schreiben-->
-                
                 <?php
                     $length=core::$view->length;
                     for($t=0; $t<$length; $t++){
@@ -37,7 +36,7 @@
                     $akttemp=$row['temp20'];
                     $akttempZeit=$row['ts'];
                     $akttempZeitrest = substr($akttempZeit, -8);
-                    echo("<td>$akttemp °C</td><td>$akttempZeitrest</td>");
+                    echo("<td><strong>$akttemp °C</strong></td><td>$akttempZeitrest</td>");
                     }
                     }
                 ?>
@@ -52,7 +51,7 @@
                     foreach($AvgTemp as $row){
                     $avgtemp=$row['AVG(temp20)'];
                     $avgtempRound=round( $avgtemp, 2, PHP_ROUND_HALF_UP);
-                    echo("<td>$avgtempRound °C</td><td>-</td>");
+                    echo("<td><strong>$avgtempRound °C</strong></td><td>-</td>");
                     }
                     }
                 ?>
@@ -69,7 +68,7 @@
                     $maxtempZeit=$row['ts'];
                     $maxtempZeitrest = substr($maxtempZeit, -8);
                     $maxtempRound=round( $maxtemp, 2, PHP_ROUND_HALF_UP);
-                    echo("<td>$maxtempRound °C</td><td>$maxtempZeitrest</td>");
+                    echo("<td><strong>$maxtempRound °C</strong></td><td>$maxtempZeitrest</td>");
                     }
                     }
                 ?>
@@ -86,7 +85,7 @@
                     $mintempZeit=$row['ts'];
                     $mintempZeitrest = substr($mintempZeit, -8);
                     $mintempRound=round( $mintemp, 2, PHP_ROUND_HALF_UP);
-                    echo("<td>$mintempRound °C</td><td>$mintempZeitrest</td>");
+                    echo("<td><strong>$mintempRound °C</strong></td><td>$mintempZeitrest</td>");
                     }
                     }
                 ?>
@@ -104,7 +103,7 @@
                     if($avgdruckRound<=-999){
                         $avgdruckRound="N/A";
                     }
-                    echo("<td>$avgdruckRound hPa</td><td>-</td>");
+                    echo("<td><strong>$avgdruckRound hPa</strong></td><td>-</td>");
                     }
                     }
                 ?>
@@ -119,7 +118,7 @@
                     foreach($AvgFeuchte as $row){
                     $avgfeuchte=$row['AVG(feuchte)'];
                     $avgfeuchteRound=round( $avgfeuchte, 2, PHP_ROUND_HALF_UP);
-                    echo("<td>$avgfeuchteRound %</td><td>-</td>");
+                    echo("<td><strong>$avgfeuchteRound %</strong></td><td>-</td>");
                     }
                     }
                 ?>
@@ -134,7 +133,7 @@
                     foreach($AvgTau as $row){
                     $avgtau=$row['AVG(taupunkt)'];
                     $avgtauRound=round( $avgtau, 2, PHP_ROUND_HALF_UP);
-                    echo("<td>$avgtauRound °C</td><td>-</td>");
+                    echo("<td><strong>$avgtauRound °C</strong></td><td>-</td>");
                     }
                     }
                 ?>
