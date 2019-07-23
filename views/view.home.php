@@ -42,12 +42,12 @@ if($user->vorname!=""){
     $willkommen= "Willkommen ".$user->vorname;
     } else {
         $willkommen="Willkommen in der Wetterapp";
-        $loggedichein="Um deine App anzupassen logge dich bitte ein.";
+        $loggedichein='<form action="?task=login" method="post" data-ajax="false"><input  type="submit" value="Logge dich hier ein, um deine App anzupassen."></form><br>';          
     }
-
 ?>
 
-     
+
+
 <label><i><?php echo($eingeloggt) ?></i></label>
 <center><label><h1><?php echo($willkommen) ?></h1></label></center>
 <center><h3><?php echo($loggedichein) ?></h3></center>
@@ -164,10 +164,22 @@ if($user->vorname!=""){
     
     
         <center>
-        <div class="ui-body ui-body-a">
+            <br>
+        <div class="ui-corner-all custom-corners">
+        <div class="ui-bar ui-bar-a">
+        <center><h1>Übersicht zu den Datensätzen</h1></center>
+        </div>
+           <?php 
+           if($user->vorname!=""){
+           echo("<br><strong>Ein Vergleich unter deinen Favoriten:</strong><br>");
+           } else {
+            echo("<br><strong>Bitte Logge dich ein, um die Datensätze deiner Favoriten vergleichen zu können.</strong><br>");
+           }
+           ?>
+            <br>
           <table>
               <tr>
-                  <th>Vergleich unter Favoriten:</th>                  
+                  <th></th>                  
                   <th>Alle Stationen</th>
                   <th></th>
                   <?php                  
