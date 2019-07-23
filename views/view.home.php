@@ -191,7 +191,7 @@ if($user->vorname!=""){
                 ?>
                </tr>
                <tr>
-                <td>Datensätze</td> 
+                <td>Anzahl an Datensätzen</td> 
                 <?php                
                     foreach($listalldata as $row){
                         foreach($row as $layer)
@@ -256,7 +256,7 @@ if($user->vorname!=""){
                </tr>
                
                 <tr>
-                <td>Durchschnitts-temperatur</td>
+                <td>Durchschnitts-Temperatur</td>
                 
                 <?php                
                     foreach($listdatatempavg as $row){
@@ -285,7 +285,7 @@ if($user->vorname!=""){
                 ?>                 
                </tr>
                <tr>
-                <td>Jüngster Datensatz</td>
+                <td>Neuester Datensatz</td>
                 <?php                
                     foreach($listmaxdate as $row){
                         foreach($row as $layer)
