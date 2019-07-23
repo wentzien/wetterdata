@@ -4,6 +4,8 @@ Core::$view->path["view1"]="views/view.heute.php";
 date_default_timezone_set("Europe/Berlin");
 $timestamp = time();
 $datum = date("Y-m-d",$timestamp);
+$datumDeutsch=date("d.m.Y", $timestamp);
+Core::$view->datumDeutsch=$datumDeutsch;
 $pdo=Core::$pdo;
 $dieStation=$_POST['ausgewStation'];
 //Wurden Stationswerte übergeben?, wenn nicht soll der Nutzer darauf hingwiesen werden dass er eine Station auswähelen soll

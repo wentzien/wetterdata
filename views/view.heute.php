@@ -4,7 +4,9 @@
 <!--Header-->
 <div class="ui-corner-all custom-corners">
   <div class="ui-bar ui-bar-a">
-    <h3>Der heutige Tag</h3>
+      <center><h1>Der heutige Tag<?php
+                                 $datumDeutsch=core::$view->datumDeutsch;
+                                 echo(" ($datumDeutsch)")?></h1></center>
   </div>
     <center>
         <div class="ui-body ui-body-a">
