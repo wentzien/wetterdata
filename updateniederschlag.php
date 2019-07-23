@@ -2,7 +2,7 @@
 ini_set("max_execution_time", 36000);
 
 $stationen=array();
-$stationen[]="03925";
+//$stationen[]="03925";
 $stationen[]="03362";
 
 function DatenEinspielen ($url){
@@ -66,7 +66,7 @@ $pforzheim=array();
      
      
      foreach($pforzheim as $entry){
-         $SQL="INSERT INTO Niederschlag (station, timestamp, ts, canvasts, RWS_DAU_10, RWS_10, RWS_IND_10, eor, quality) VALUES (?,?,?,?,?,?,?,?,?)"
+         $SQL="INSERT INTO Niederschlag (station, timestamp, ts, RWS_DAU_10, RWS_10, RWS_IND_10, eor, quality, canvasts) VALUES (?,?,?,?,?,?,?,?,?)"
                  . "ON DUPLICATE KEY UPDATE ts=VALUES(ts), RWS_DAU_10=VALUES(RWS_DAU_10), RWS_10=VALUES(RWS_10), RWS_IND_10=VALUES(RWS_IND_10), eor=VALUES(eor), quality=VALUES(quality);";
                 
 //            $SQL="INSERT IGNORE INTO Temperatur (station,timestamp, ts, Luftdruck, temp5, temp20,feuchte, taupunkt,quality,canvasts) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -80,14 +80,13 @@ $pforzheim=array();
              $minute=substr($entry[1],10,2);
              $seconds="00";
              $timestamp= mktime($hour,$minute,$seconds,$month,$day,$year);
-             $ts="$year-$month-$day $hour:$minute:$seconds";
-             $canvasts="$year, $month, $day, $hour, $minute";
+             $ts="$year-$month-$day $hour:$minute:$seconds";             
              $RWS_DAU_10=$entry[3];
              $RWS_10=$entry[4];
              $RWS_IND_10=$entry[5];
              $eor=$entry[6];             
              $quality=$entry[2];
-                      
+             $canvasts="$year, $month, $day, $hour, $minute";         
   
          
          
@@ -106,6 +105,6 @@ foreach ($stationen as $station) {
     $urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/precipitation/recent/10minutenwerte_nieder_".$station."_akt.zip";
     
     DatenEinspielen($urlnow);
-//    DatenEinspielen($urlrecent);
+    //DatenEinspielen($urlrecent);
 }
 ?>
