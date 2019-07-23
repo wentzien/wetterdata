@@ -6,7 +6,7 @@ if($user->vorname!=""){
     } 
 ?>
 
-<center><label><h1><?php echo("$willkommen füge hier weitere Stationen zu deinen Favoriten hinzu") ?></h1></label></center>
+<center><label><h1><?php echo("$willkommen, füge hier weitere Stationen zu deinen Favoriten hinzu") ?></h1></label></center>
 
 
 <form action="?task=editfav" method="post">
@@ -24,7 +24,7 @@ echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n"
 
 
 
-<center><label><h1><?php echo("Oder entferne Stationen aus deine Favoritenliste") ?></h1></label></center>
+<center><label><h1><?php echo("Oder entferne Stationen aus deiner Favoritenliste") ?></h1></label></center>
 
 
 <form action="?task=editfav" method="post">
