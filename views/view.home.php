@@ -225,10 +225,7 @@ if($user->vorname!=""){
                 ?> 
               
                </tr>
-               <tr>
-                <td>Datensätze seit Ende 2018</td>
-                         
-               </tr>
+
                <tr>
                 <td>Durchschnitts-Luftdruck</td>
                 <?php                
