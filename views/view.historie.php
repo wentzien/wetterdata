@@ -57,6 +57,11 @@
 </div>
 <div id="chartContainerTau" style="height: 370px; width: 100%;"></div><br>
 
+<div data-role="header" data-theme="b">
+    <h1>Niederschlag</h1>
+</div>
+<div id="chartContainerniederschlag" style="height: 370px; width: 100%;"></div><br>
+
 <!--Footer-->
 
 <div data-role="footer">
@@ -335,5 +340,74 @@ function toggleDataSeriesTau(e){
 	}
 	chart4.render();
 }
+
+
+//Niederschlag
+var chart5 = new CanvasJS.Chart("chartContainerniederschlag", {
+	animationEnabled: true,
+        zoomEnabled: true,
+//	title:{
+//		text: "Das heutige Wetter"
+//	},
+	axisX: {
+		valueFormatString: "DD-MM-YY"
+	},
+	axisY: {
+		title: "Niederschlag in mm",
+		includeZero: false,
+		suffix: " mm/m²"
+	},
+	legend:{
+		cursor: "pointer",
+		fontSize: 16,
+		itemclick: toggleDataSeriesniederschlag
+	},
+	toolTip:{
+		shared: true
+	},
+	data: [
+            <?php 
+            for($x=0; $x<=$length; $x++){
+            echo('{
+		name: "');
+                        //Ausgabe des Stationsnamen
+                        $row1="";
+                        $stationNameniederschlag="stationniederschlag$x";
+                        $stationniederschlag=core::$view->$stationNameniederschlag;
+                        foreach($stationniederschlag as $row1){
+                        echo($row1['stationsname']);
+                        }   
+                        //Ende Ausgabe des Stationsnamen
+            echo('",
+		type: "column",
+		yValueFormatString: "#0.## mm",
+		showInLegend: true,
+		dataPoints: ['); 
+                        //Ausgabe der niederschlag Werte
+                        $row2="";
+                        $heuteniederschlagNummer="heuteniederschlag$x";
+                        $heuteniederschlag=core::$view->$heuteniederschlagNummer;
+                        foreach ($heuteniederschlag as $row2){
+                        echo("{ x: new Date (".$row2['canvasts']."), y: ".$row2['RS']." },\n");
+                        }
+                        //Ende der Ausgabe der niederschlag Werte
+            echo(']
+            },'); 
+            }
+            ?>
+    ]
+});
+chart5.render();
+
+function toggleDataSeriesniederschlag(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart5.render();
+}
+
 }
 </script>

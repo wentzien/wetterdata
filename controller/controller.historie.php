@@ -63,6 +63,13 @@ foreach($dieStation as $stat){
     $HeuteTaupunktNummer="heuteTaupunkt$i";
     Core::$view->$HeuteTaupunktNummer=$taupunktheute;
     //Ende Übergabe des Taupunkt
+    
+    //Übergabe Niederschlag
+    $sqlniederschlag="select RS, canvasts from niederschlagdaily where station=$stat AND RS>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $niederschlagheute=$pdo->query($sqlniederschlag);
+    $HeuteniederschlagNummer="heuteniederschlag$i";
+    Core::$view->$HeuteniederschlagNummer=$niederschlagheute;
+    //Ende Übergabe der Niederschlag
 
     //Übergabe  des Stationsnamen an TempDiagramm
     $sqlStationTemp="select stationsname from Stationen where id=$stat";
@@ -90,6 +97,13 @@ foreach($dieStation as $stat){
     $stationTau=$pdo->query($sqlStationTau);
     $stationNameTau="stationTau$i";
     Core::$view->$stationNameTau=$stationTau;
+    //Ende Übergabe des Stationsnamen
+    
+    //Übergabe des Stationsnamen an NiederschlagDiagramm
+    $sqlStationniederschlag="select stationsname from Stationen where id=$stat";
+    $stationniederschlag=$pdo->query($sqlStationniederschlag);
+    $stationNameniederschlag="stationniederschlag$i";
+    Core::$view->$stationNameniederschlag=$stationniederschlag;
     //Ende Übergabe des Stationsnamen
     
     $i++;

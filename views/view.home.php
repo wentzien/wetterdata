@@ -119,10 +119,6 @@ if($user->vorname!=""){
     <?php } ?>
     </tbody>
     </table>
-
-   <div id="set" title="Set Appointment" class="panel">
-            <iframe src="https://www.w3schools.com"></iframe> 
-    </div>  
   </div>
     
     <div id="three" class="ui-body-d ui-content">
