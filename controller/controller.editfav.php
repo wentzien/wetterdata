@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 $uID=Core::$user->m_oid;
 $pdo = Core::$pdo;
 if ((filter_input(INPUT_POST,"addfav",FILTER_SANITIZE_STRING)) <> ""){
@@ -20,10 +19,29 @@ $pdo->query($SQLdellfav);
     
 };
 
-$SQLallStat="SELECT * FROM Stationen LEFT JOIN favoriten ON Stationen.id = favoriten.StationID WHERE (UserID IS Null OR UserID <> 2) AND (BL='BW') order by stationsname";
+$SQLallStat="SELECT * FROM Stationen LEFT JOIN favoriten ON Stationen.id = favoriten.StationID WHERE (UserID IS Null OR UserID <> 2)order by stationsname";
 $allStat=$pdo->query($SQLallStat);
 $SQLallfavs="SELECT * FROM favoriten LEFT JOIN Stationen ON favoriten.Stationid = Stationen.ID Where UserID=$uID";
 $allfavs=$pdo->query($SQLallfavs);
 Core::$view->allStat=$allStat;
 Core::$view->allfavs=$allfavs;
 Core::$view->path["view1"]="views/view.editfav.php";
+
+
+
+if(count($_POST)>0){
+    $pdo = Core::$pdo;
+    $search= "'%".filter_input(INPUT_POST,"stationname")."%'";
+    if($search<>"'%%'"){
+    $SQLstat= "SELECT * From alleStationen WHERE stationsname LIKE$search";
+    $stationsliste=$pdo->query($SQLstat);
+    }
+}
+
+
+Core::$view->station=$stationsliste;
+
+
+if($stationsliste<>""){
+    Core::$view->path["view2"]="views/view.stationlist.php";
+}

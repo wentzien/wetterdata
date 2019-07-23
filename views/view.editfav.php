@@ -38,3 +38,23 @@ echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n"
 </select>
 <input type="submit" name="editfav" value="Station entfernen">
 
+</form>
+
+
+
+
+
+
+<form id="stationsearch" method="post" action="?task=editfav" data-ajax="true">
+	<div class="ui-field-contain">
+            <label for="stationname">Stationsname:</label><input id="Stationsname" placeholder="Suchen" name="stationname" onkeyup="ajaxpost(this, 'editfav', 'view2')"/>    
+        </div>
+</form>
+
+
+
+
+
+
+
+
