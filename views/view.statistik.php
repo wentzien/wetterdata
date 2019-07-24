@@ -55,7 +55,7 @@
                 foreach($AktTemp as $row){
                 $akttemp=$row['temp20'];
                 $akttempZeit=$row['ts'];
-                $akttempZeitrest = substr($akttempZeit, -8);
+                $akttempZeitrest = substr($akttempZeit, 0, -9);
                 echo("<td><strong>$akttemp °C</strong></td><td>$akttempZeitrest</td>");
                 }
                 }
@@ -86,7 +86,7 @@
                 foreach($MaxTemp as $row){
                 $maxtemp=$row['temp20'];
                 $maxtempZeit=$row['ts'];
-                $maxtempZeitrest = substr($maxtempZeit, -8);
+                $maxtempZeitrest = substr($maxtempZeit, 0, -9);
                 $maxtempRound=round( $maxtemp, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxtempRound °C</strong></td><td>$maxtempZeitrest</td>");
                 }
@@ -103,7 +103,7 @@
                 foreach($MinTemp as $row){
                 $mintemp=$row['temp20'];
                 $mintempZeit=$row['ts'];
-                $mintempZeitrest = substr($mintempZeit, -8);
+                $mintempZeitrest = substr($mintempZeit, 0, -9);
                 $mintempRound=round( $mintemp, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$mintempRound °C</strong></td><td>$mintempZeitrest</td>");
                 }

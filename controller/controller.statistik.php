@@ -48,49 +48,49 @@ foreach($dieStation as $stat){
         //Ende Stationsname
         
         //aktuellste Temp Wert
-        $sqlAktTemp="select temp20, ts from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' order by ts desc limit 1";
+        $sqlAktTemp="select temp20, ts from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999 order by ts desc limit 1";
         $AktTempheute=$pdo->query($sqlAktTemp);
         $HeuteAktTempNummer="aktTemp$i";
         Core::$view->$HeuteAktTempNummer=$AktTempheute;
         //Ende aktuellste Temp Wert
         
         //Durchschnittstemperatur
-        $sqlAvgTemp="select AVG(temp20) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $sqlAvgTemp="select AVG(temp20) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999";
         $AvgTempheute=$pdo->query($sqlAvgTemp);
         $HeuteAvgTempNummer="avgTemp$i";
         Core::$view->$HeuteAvgTempNummer=$AvgTempheute;
         //Ende Durchschnittstemperatur
         
         //Max-Temperatur
-        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat ts>'$datumVon%' AND ts<'$datumBis%') AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' limit 1";
+        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999 limit 1";
         $MaxTempheute=$pdo->query($sqlMaxTemp);
         $HeuteMaxTempNummer="maxTemp$i";
         Core::$view->$HeuteMaxTempNummer=$MaxTempheute;
         //Ende Max-Temperatur
         
         //Min-Temperatur
-        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%') AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' limit 1";
+        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999 limit 1";
         $MinTempheute=$pdo->query($sqlMinTemp);
         $HeuteMinTempNummer="minTemp$i";
         Core::$view->$HeuteMinTempNummer=$MinTempheute;
         //Ende Max-Temperatur
         
         //Durchschnitts Luftdruck
-        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999";
         $AvgDruckheute=$pdo->query($sqlAvgDruck);
         $HeuteAvgDruckNummer="avgDruck$i";
         Core::$view->$HeuteAvgDruckNummer=$AvgDruckheute;
         //Ende Durchschnitts Luftdruck
         
         //Durchschnitts Luftfeuchtigkeit
-        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999";
         $AvgFeuchteheute=$pdo->query($sqlAvgFeuchte);
         $HeuteAvgFeuchteNummer="avgFeuchte$i";
         Core::$view->$HeuteAvgFeuchteNummer=$AvgFeuchteheute;
         //Ende Durchschnitts Luftfeuchtigkeit
         
         //Durchschnitts Taupunkt
-        $sqlAvgTau="select AVG(taupunkt) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $sqlAvgTau="select AVG(taupunkt) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and temp20>-999";
         $AvgTauheute=$pdo->query($sqlAvgTau);
         $HeuteAvgTauNummer="avgTau$i";
         Core::$view->$HeuteAvgTauNummer=$AvgTauheute;
