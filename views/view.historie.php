@@ -79,7 +79,7 @@ var chart1 = new CanvasJS.Chart("chartContainerTemp", {
 //		text: "Das heutige Wetter"
 //	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "DD-MM-YY"
 	},
 	axisY: {
 		title: "Temperature (in °C)",
@@ -148,7 +148,7 @@ var chart2 = new CanvasJS.Chart("chartContainerDruck", {
 //		text: "Das heutige Wetter"
 //	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "DD-MM-YY"
 	},
 	axisY: {
 		title: "Luftdruck (in hPa)",
@@ -215,7 +215,7 @@ var chart3 = new CanvasJS.Chart("chartContainerFeuchte", {
 //		text: "Das heutige Wetter"
 //	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "DD-MM-YY"
 	},
 	axisY: {
 		title: "relative Feuchte (in %)",
@@ -245,7 +245,7 @@ var chart3 = new CanvasJS.Chart("chartContainerFeuchte", {
                         //Ende Ausgabe des Stationsnamen
             echo('",
 		type: "column",
-		yValueFormatString: "#0.## %",
+		yValueFormatString: "",
 		showInLegend: true,
 		dataPoints: ['); 
                         //Ausgabe der Temp Werte
@@ -282,7 +282,7 @@ var chart4 = new CanvasJS.Chart("chartContainerTau", {
 //		text: "Das heutige Wetter"
 //	},
 	axisX: {
-		valueFormatString: "HH:mm"
+		valueFormatString: "DD-MM-YY"
 	},
 	axisY: {
 		title: "Taupunkttemperatur (in °C)",
@@ -353,7 +353,7 @@ var chart5 = new CanvasJS.Chart("chartContainerniederschlag", {
 		valueFormatString: "DD-MM-YY"
 	},
 	axisY: {
-		title: "Niederschlag in mm",
+		title: "Niederschlag in mm/m²",
 		includeZero: false,
 		suffix: " mm/m²"
 	},
@@ -380,7 +380,7 @@ var chart5 = new CanvasJS.Chart("chartContainerniederschlag", {
                         //Ende Ausgabe des Stationsnamen
             echo('",
 		type: "column",
-		yValueFormatString: "#0.## mm",
+		yValueFormatString: "#0.## mm/m²",
 		showInLegend: true,
 		dataPoints: ['); 
                         //Ausgabe der niederschlag Werte

@@ -1,4 +1,5 @@
 <?php
+ini_set("max_execution_time", 300);
 Core::$view->path["view1"]="views/view.historie.php";
 
 date_default_timezone_set("Europe/Berlin");
