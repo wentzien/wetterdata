@@ -193,6 +193,33 @@ foreach($dieStation as $stat){
         Core::$view->$HeuteLowFNummer=$LowFheute;
         //Ende Niedrigste Messung Frühling 
         
+        //Heißester Sommer
+        $sqlHotS="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HotSheute=$pdo->query($sqlHotS);
+        $HeuteHotSNummer="hotS$i";
+        Core::$view->$HeuteHotSNummer=$HotSheute;
+        //Ende Heißester Sommer
+        
+        //Kältester Sommer
+        $sqlColdS="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $ColdSheute=$pdo->query($sqlColdS);
+        $HeuteColdSNummer="coldS$i";
+        Core::$view->$HeuteColdSNummer=$ColdSheute;
+        //Ende Kältester Sommer        
+        
+        //Höchste Messung Sommer
+        $sqlHighS="SELECT t.ts, t.average FROM (SELECT ts, max(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HighSheute=$pdo->query($sqlHighS);
+        $HeuteHighSNummer="highS$i";
+        Core::$view->$HeuteHighSNummer=$HighSheute;
+        //Ende Höchste Messung Sommer
+
+        //Niedrigste Messung Sommer
+        $sqlLowS="SELECT t.ts, t.average FROM (SELECT ts, min(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $LowSheute=$pdo->query($sqlLowS);
+        $HeuteLowSNummer="lowS$i";
+        Core::$view->$HeuteLowSNummer=$LowSheute;
+        //Ende Niedrigste Messung Sommer
 
         //----------------------------------------------------------------------
         //Tabellen-Daten ungefiltert nach Niederschlag
