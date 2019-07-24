@@ -336,52 +336,52 @@
             ?>
           </tr>
            <tr>
-            <td>Heißester Frühling (Durchschnitt)</td>
+               <td>Heißester <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Kältester Frühling (Durchschnitt)</td>
+            <td>Kältester <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Höchste Messung im Frühling</td>
+            <td>Höchste Messung im <strong style="color:green">Frühling</strong></td>
            </tr>
            <tr>
-            <td>Niedrigste Messung im Frühling</td>
+            <td>Niedrigste Messung im <strong style="color:green">Frühling</strong></td>
            </tr>
            <tr>
-            <td>Heißester Sommer (Durchschnitt)</td>
+            <td>Heißester <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Kältester Sommer (Durchschnitt)</td>
+            <td>Kältester <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Höchste Messung im Sommer</td>
+            <td>Höchste Messung im <strong style="color:red">Sommer</strong></td>
            </tr>
            <tr>
-            <td>Niedrigste Messung im Sommer</td>
+            <td>Niedrigste Messung im <strong style="color:red">Sommer</strong></td>
            </tr>
            <tr>
-            <td>Heißester Herbst (Durchschnitt)</td>
+            <td>Heißester <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Kältester Herbst (Durchschnitt)</td>
+            <td>Kältester <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Höchste Messung im Herbst</td>
+            <td>Höchste Messung im <strong style="color:orange">Herbst</strong></td>
            </tr>
            <tr>
-            <td>Niedrigste Messung im Herbst</td>
+            <td>Niedrigste Messung im <strong style="color:orange">Herbst</strong></td>
            </tr>
            <tr>
-            <td>Heißester Winter (Durchschnitt)</td>
+            <td>Heißester <strong style="color:blue">Winter</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Kältester Winter (Durchschnitt)</td>
+            <td>Kältester <strong style="color:blue">Winter</strong> (Durchschnitt)</td>
            </tr>
            <tr>
-            <td>Höchste Messung im Winter</td>
+            <td>Höchste Messung im <strong style="color:blue">Winter</strong></td>
            </tr>
            <tr>
-            <td>Niedrigste Messung im Winter</td>
+            <td>Niedrigste Messung im <strong style="color:blue">Winter</strong></td>
            </tr>
         </table>
     </div>
