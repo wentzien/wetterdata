@@ -404,15 +404,71 @@
            </tr>
            <tr>
             <td>Heißester <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameHotS="hotS$t";
+                    $HotS=core::$view->$NameHotS;
+                    foreach($HotS as $row){
+                    $hots=$row['average'];
+                    $hotsZeit=$row['ts'];
+                    $hotsZeitrest = substr($hotsZeit, 0, -15);
+                    $hotsRound=round( $hots, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$hotsRound °C</strong></td><td>$hotsZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Kältester <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameColdS="coldS$t";
+                    $ColdS=core::$view->$NameColdS;
+                    foreach($ColdS as $row){
+                    $colds=$row['average'];
+                    $coldsZeit=$row['ts'];
+                    $coldsZeitrest = substr($coldsZeit, 0, -15);
+                    $coldsRound=round( $colds, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$coldsRound °C</strong></td><td>$coldsZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Höchste Messung im <strong style="color:red">Sommer</strong></td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameHighS="highS$t";
+                    $HighS=core::$view->$NameHighS;
+                    foreach($HighS as $row){
+                    $highs=$row['average'];
+                    $highsZeit=$row['ts'];
+                    $highsZeitrest = substr($highsZeit, 0, -15);
+                    $highsRound=round( $highs, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$highsRound °C</strong></td><td>$highsZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Niedrigste Messung im <strong style="color:red">Sommer</strong></td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameLowS="lowS$t";
+                    $LowS=core::$view->$NameLowS;
+                    foreach($LowS as $row){
+                    $lows=$row['average'];
+                    $lowsZeit=$row['ts'];
+                    $lowsZeitrest = substr($lowsZeit, 0, -15);
+                    $lowsRound=round( $lows, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$lowsRound °C</strong></td><td>$lowsZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Heißester <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
