@@ -130,9 +130,37 @@
            </tr>
            <tr>
             <td>Max-Luftdruck</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMaxDruck="maxDruck$t";
+                $MaxDruck=core::$view->$NameMaxDruck;
+                foreach($MaxDruck as $row){
+                $maxdruck=$row['Luftdruck'];
+                $maxdruckZeit=$row['ts'];
+                $maxdruckZeitrest = substr($maxdruckZeit, 0, -9);
+                $maxdruckRound=round( $maxdruck, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$maxdruckRound hPa</strong></td><td>$maxdruckZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Min-Luftdruck</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMinDruck="minDruck$t";
+                $MinDruck=core::$view->$NameMinDruck;
+                foreach($MinDruck as $row){
+                $mindruck=$row['Luftdruck'];
+                $mindruckZeit=$row['ts'];
+                $mindruckZeitrest = substr($mindruckZeit, 0, -9);
+                $mindruckRound=round( $mindruck, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mindruckRound hPa</strong></td><td>$mindruckZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Durchschnitts-Luftfeuchtigkeit</td>
@@ -151,9 +179,37 @@
            </tr>
            <tr>
             <td>Max-Luftfeuchtigkeit</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMaxFeuchte="maxFeuchte$t";
+                $MaxFeuchte=core::$view->$NameMaxFeuchte;
+                foreach($MaxFeuchte as $row){
+                $maxfeuchte=$row['feuchte'];
+                $maxfeuchteZeit=$row['ts'];
+                $maxfeuchteZeitrest = substr($maxfeuchteZeit, 0, -9);
+                $maxfeuchteRound=round( $maxfeuchte, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$maxfeuchteRound %</strong></td><td>$maxfeuchteZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
-            <td>Min-Luftdruck</td>
+            <td>Min-Luftfeuchtigkeit</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMinFeuchte="minFeuchte$t";
+                $MinFeuchte=core::$view->$NameMinFeuchte;
+                foreach($MinFeuchte as $row){
+                $minfeuchte=$row['feuchte'];
+                $minfeuchteZeit=$row['ts'];
+                $minfeuchteZeitrest = substr($minfeuchteZeit, 0, -9);
+                $minfeuchteRound=round( $minfeuchte, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$minfeuchteRound %</strong></td><td>$minfeuchteZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Durchschnitts-Taupunkttemperatur</td>

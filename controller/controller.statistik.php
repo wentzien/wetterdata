@@ -38,7 +38,7 @@ foreach($dieStation as $stat){
     Core::$view->$stationsNummer=$stat;
     
     //----------------------------------------------------------------------
-        //Tabellen-Daten
+        //Tabellen-Daten gefiltert nach ausgewählten Zeitraum
 
         //Stationsnamen
         $sqlStationTabelle="select stationsname from Stationen where id=$stat";
@@ -95,6 +95,34 @@ foreach($dieStation as $stat){
         $HeuteAvgTauNummer="avgTau$i";
         Core::$view->$HeuteAvgTauNummer=$AvgTauheute;
         //Ende Durchschnitts Taupunkt
+        
+        //Max-Luftdruck
+        $sqlMaxDruck="SELECT Luftdruck, ts from Temperatur WHERE Luftdruck=(SELECT MAX(Luftdruck) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and Luftdruck>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and Luftdruck>-999 limit 1";
+        $MaxDruckheute=$pdo->query($sqlMaxDruck);
+        $HeuteMaxDruckNummer="maxDruck$i";
+        Core::$view->$HeuteMaxDruckNummer=$MaxDruckheute;
+        //Ende Max-Lufdruck
+        
+        //Min-Luftdruck
+        $sqlMinDruck="SELECT Luftdruck, ts from Temperatur WHERE Luftdruck=(SELECT MIN(Luftdruck) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and Luftdruck>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and Luftdruck>-999 limit 1";
+        $MinDruckheute=$pdo->query($sqlMinDruck);
+        $HeuteMinDruckNummer="minDruck$i";
+        Core::$view->$HeuteMinDruckNummer=$MinDruckheute;
+        //Ende Min-Lufdruck
+        
+        //Max-Luftfeuchtigkeit
+        $sqlMaxFeuchte="SELECT feuchte, ts from Temperatur WHERE feuchte=(SELECT MAX(feuchte) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and feuchte>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and feuchte>-999 limit 1";
+        $MaxFeuchteheute=$pdo->query($sqlMaxFeuchte);
+        $HeuteMaxFeuchteNummer="maxFeuchte$i";
+        Core::$view->$HeuteMaxFeuchteNummer=$MaxFeuchteheute;
+        //Ende Max-Luftfeuchtigkeit
+        
+        //Min-Luftfeuchtigkeit
+        $sqlMinFeuchte="SELECT feuchte, ts from Temperatur WHERE feuchte=(SELECT MIN(feuchte) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and feuchte>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and feuchte>-999 limit 1";
+        $MinFeuchteheute=$pdo->query($sqlMinFeuchte);
+        $HeuteMinFeuchteNummer="minFeuchte$i";
+        Core::$view->$HeuteMinFeuchteNummer=$MinFeuchteheute;
+        //Ende Min-Luftfeuchtigkeit
     
     $i++;
 }
