@@ -406,40 +406,40 @@
             ?>
           </tr>
            <tr>
-            <td>Menge im Frühling (Durchschnitt)</td>
+            <td>Menge im <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
            </tr> 
            <tr>
-            <td>Regnerischste Tag im Frühling</td>
+            <td>Regnerischste Tag im <strong style="color:green">Frühling</strong></td>
            </tr>
            <tr>
-            <td>Längste Trockenzeit im Frühling</td>
+            <td>Längste Trockenzeit im <strong style="color:green">Frühling</strong></td>
            </tr>
            <tr>
-            <td>Menge im Sommer (Durchschnitt)</td>
+            <td>Menge im <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
            </tr> 
            <tr>
-            <td>Regnerischste Tag im Sommer</td>
+            <td>Regnerischste Tag im <strong style="color:red">Sommer</strong></td>
            </tr>
            <tr>
-            <td>Längste Trockenzeit im Sommer</td>
+            <td>Längste Trockenzeit im <strong style="color:red">Sommer</strong></td>
            </tr>
            <tr>
-            <td>Menge im Herbst (Durchschnitt)</td>
+            <td>Menge im <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
            </tr> 
            <tr>
-            <td>Regnerischste Tag im Herbst</td>
+            <td>Regnerischste Tag im <strong style="color:orange">Herbst</strong></td>
            </tr>
            <tr>
-            <td>Längste Trockenzeit im Herbst</td>
+            <td>Längste Trockenzeit im <strong style="color:orange">Herbst</strong></td>
            </tr>
            <tr>
-            <td>Menge im Winter (Durchschnitt)</td>
+            <td>Menge im <strong style="color:blue">Winter</strong> (Durchschnitt)</td>
            </tr> 
            <tr>
-            <td>Regnerischste Tag im Winter</td>
+            <td>Regnerischste Tag im <strong style="color:blue">Winter</strong></td>
            </tr>
            <tr>
-            <td>Längste Trockenzeit im Winter</td>
+            <td>Längste Trockenzeit im <strong style="color:blue">Winter</strong></td>
            </tr>
         </table>
     </div>
