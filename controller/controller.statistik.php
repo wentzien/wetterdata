@@ -159,10 +159,10 @@ foreach($dieStation as $stat){
         //Tabellen-Daten ungefiltert nach Temperatur
         
         //Stationsnamen
-        $sqlStationNiederschlag="select stationsname from Stationen where id=$stat";
-        $stationNiederschlag=$pdo->query($sqlStationNiederschlag);
-        $stationNameNiederschlag="stationNiederschlag$i";
-        Core::$view->$stationNameNiederschlag=$stationNiederschlag;
+        $sqlStationTemperatur="select stationsname from Stationen where id=$stat";
+        $stationTemperatur=$pdo->query($sqlStationTemperatur);
+        $stationNameTemperatur="stationTemperatur$i";
+        Core::$view->$stationNameTemperatur=$stationTemperatur;
         //Ende Stationsname
         
         //Heißester Frühling
@@ -280,7 +280,33 @@ foreach($dieStation as $stat){
         //----------------------------------------------------------------------
         //Tabellen-Daten ungefiltert nach Niederschlag
         
+        //Stationsnamen
+        $sqlStationNiederschlag="select stationsname from Stationen where id=$stat";
+        $stationNiederschlag=$pdo->query($sqlStationNiederschlag);
+        $stationNameNiederschlag="stationNiederschlag$i";
+        Core::$view->$stationNameNiederschlag=$stationNiederschlag;
+        //Ende Stationsname
         
+        //Menge im Frühling
+        $sqlMengeF="SELECT AVG(RS) FROM niederschlagdaily WHERE station=$stat AND RS>-999 AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%')";
+        $MengeF=$pdo->query($sqlMengeF);
+        $MengeFNummer="mengeF$i";
+        Core::$view->$MengeFNummer=$MengeF;
+        //Ende Menge im Frühling
+        
+        //Regnerischste Tag im Frühling
+        $sqlRegnerischF="SELECT * FROM (SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc";
+        $RegnerischF=$pdo->query($sqlRegnerischF);
+        $RegnerischFNummer="regnerischF$i";
+        Core::$view->$RegnerischFNummer=$RegnerischF;
+        //Ende Regnerischste Tag im Frühling
+        
+        //Regnerischste Tag im Frühling
+        $sqlTrockenF="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY tage desc";
+        $TrockenF=$pdo->query($sqlTrockenF);
+        $TrockenFNummer="trockenF$i";
+        Core::$view->$TrockenFNummer=$TrockenF;
+        //Ende Regnerischste Tag im Frühling
     
     $i++;
 }

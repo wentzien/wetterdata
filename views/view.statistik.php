@@ -325,11 +325,11 @@
             <?php
                 for($t=0; $t<$length; $t++){
                 $row="";
-                $stationNameNiederschlag="stationNiederschlag$t";
-                $stationNiederschlag=core::$view->$stationNameNiederschlag;
-                foreach($stationNiederschlag as $row){
-                $stationNN=$row['stationsname'];
-                echo("<th>$stationNN</th><th></th>");
+                $stationNameTemperatur="stationTemperatur$t";
+                $stationTemperatur=core::$view->$stationNameTemperatur;
+                foreach($stationTemperatur as $row){
+                $stationNt=$row['stationsname'];
+                echo("<th>$stationNt</th><th></th>");
                 }
                 }
             ?>
@@ -618,20 +618,33 @@
             <?php
                 for($t=0; $t<$length; $t++){
                 $row="";
-                $stationNameTabelle="stationTabelle$t";
-                $stationTabelle=core::$view->$stationNameTabelle;
-                foreach($stationTabelle as $row){
-                $stationNT=$row['stationsname'];
-                echo("<th>$stationNT</th><th></th>");
+                $stationNameNiederschlag="stationNiederschlag$t";
+                $stationNiederschlag=core::$view->$stationNameNiederschlag;
+                foreach($stationNiederschlag as $row){
+                $stationNN=$row['stationsname'];
+                echo("<th>$stationNN</th><th></th>");
                 }
                 }
             ?>
           </tr>
            <tr>
             <td>Menge im <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMengeF="mengeF$t";
+                $MengeF=core::$view->$NameMengeF;
+                foreach($MengeF as $row){
+                $mengef=$row['AVG(RS)'];
+                $mengefRound=round( $mengef, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mengefRound mm/m²</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr> 
            <tr>
             <td>Regnerischste Tag im <strong style="color:green">Frühling</strong></td>
+            
            </tr>
            <tr>
             <td>Längste Trockenzeit im <strong style="color:green">Frühling</strong></td>
