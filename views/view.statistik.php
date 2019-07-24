@@ -652,7 +652,7 @@
                     foreach($RegnerischF as $row){
                     $regnerischf=$row['menge'];
                     $regnerischfZeit=$row['ts'];
-                    $regnerischfZeitrest = substr($regnerischfZeit, 0, -15);
+                    $regnerischfZeitrest = substr($regnerischfZeit, 0, -9);
                     $regnerischfRound=round( $regnerischf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischfRound mm/m²</strong></td><td>$regnerischfZeitrest</td>");
                     }
@@ -675,30 +675,141 @@
            </tr>
            <tr>
             <td>Menge im <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMengeS="mengeS$t";
+                $MengeS=core::$view->$NameMengeS;
+                foreach($MengeS as $row){
+                $menges=$row['AVG(RS)'];
+                $mengesRound=round( $menges, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mengesRound mm/m²</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr> 
            <tr>
             <td>Regnerischste Tag im <strong style="color:red">Sommer</strong></td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameRegnerischS="regnerischS$t";
+                    $RegnerischS=core::$view->$NameRegnerischS;
+                    foreach($RegnerischS as $row){
+                    $regnerischs=$row['menge'];
+                    $regnerischsZeit=$row['ts'];
+                    $regnerischsZeitrest = substr($regnerischsZeit, 0, -9);
+                    $regnerischsRound=round( $regnerischs, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$regnerischsRound mm/m²</strong></td><td>$regnerischsZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Längste Trockenzeit im <strong style="color:red">Sommer</strong></td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameTrockenS="trockenS$t";
+                $TrockenS=core::$view->$NameTrockenS;
+                foreach($TrockenS as $row){
+                $trockens=$row['tage'];
+                echo("<td><strong>$trockens Tage</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Menge im <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMengeH="mengeH$t";
+                $MengeH=core::$view->$NameMengeH;
+                foreach($MengeH as $row){
+                $mengeh=$row['AVG(RS)'];
+                $mengehRound=round( $mengeh, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mengehRound mm/m²</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr> 
            <tr>
             <td>Regnerischste Tag im <strong style="color:orange">Herbst</strong></td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameRegnerischH="regnerischH$t";
+                    $RegnerischH=core::$view->$NameRegnerischH;
+                    foreach($RegnerischH as $row){
+                    $regnerischh=$row['menge'];
+                    $regnerischhZeit=$row['ts'];
+                    $regnerischhZeitrest = substr($regnerischhZeit, 0, -9);
+                    $regnerischhRound=round( $regnerischh, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$regnerischhRound mm/m²</strong></td><td>$regnerischhZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Längste Trockenzeit im <strong style="color:orange">Herbst</strong></td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameTrockenH="trockenH$t";
+                $TrockenH=core::$view->$NameTrockenH;
+                foreach($TrockenH as $row){
+                $trockenh=$row['tage'];
+                echo("<td><strong>$trockenh Tage</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Menge im <strong style="color:blue">Winter</strong> (Durchschnitt)</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMengeW="mengeW$t";
+                $MengeW=core::$view->$NameMengeW;
+                foreach($MengeW as $row){
+                $mengew=$row['AVG(RS)'];
+                $mengewRound=round( $mengew, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mengewRound mm/m²</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr> 
            <tr>
             <td>Regnerischste Tag im <strong style="color:blue">Winter</strong></td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameRegnerischW="regnerischW$t";
+                    $RegnerischW=core::$view->$NameRegnerischW;
+                    foreach($RegnerischW as $row){
+                    $regnerischw=$row['menge'];
+                    $regnerischwZeit=$row['ts'];
+                    $regnerischwZeitrest = substr($regnerischwZeit, 0, -9);
+                    $regnerischwRound=round( $regnerischw, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$regnerischwRound mm/m²</strong></td><td>$regnerischwZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Längste Trockenzeit im <strong style="color:blue">Winter</strong></td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameTrockenW="trockenW$t";
+                $TrockenW=core::$view->$NameTrockenW;
+                foreach($TrockenW as $row){
+                $trockenw=$row['tage'];
+                echo("<td><strong>$trockenw Tage</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr>
         </table>
     </div>

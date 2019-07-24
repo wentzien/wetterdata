@@ -307,6 +307,69 @@ foreach($dieStation as $stat){
         $TrockenFNummer="trockenF$i";
         Core::$view->$TrockenFNummer=$TrockenF;
         //Ende Regnerischste Tag im Frühling
+        
+        //Menge im Sommer
+        $sqlMengeS="SELECT AVG(RS) FROM niederschlagdaily WHERE station=$stat AND RS>-999 AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%')";
+        $MengeS=$pdo->query($sqlMengeS);
+        $MengeSNummer="mengeS$i";
+        Core::$view->$MengeSNummer=$MengeS;
+        //Ende Menge im Sommer
+        
+        //Regnerischste Tag im Sommer
+        $sqlRegnerischS="SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc limit 1";
+        $RegnerischS=$pdo->query($sqlRegnerischS);
+        $RegnerischSNummer="regnerischS$i";
+        Core::$view->$RegnerischSNummer=$RegnerischS;
+        //Ende Regnerischste Tag im Sommer
+        
+        //Regnerischste Tag im Sommer
+        $sqlTrockenS="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-06-%' OR ts LIKE '%-07-%' OR ts LIKE '%-08-%') GROUP BY YEAR(ts)) t GROUP BY tage desc limit 1";
+        $TrockenS=$pdo->query($sqlTrockenS);
+        $TrockenSNummer="trockenS$i";
+        Core::$view->$TrockenSNummer=$TrockenS;
+        //Ende Regnerischste Tag im Sommer
+        
+        //Menge im Herbst
+        $sqlMengeH="SELECT AVG(RS) FROM niederschlagdaily WHERE station=$stat AND RS>-999 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%')";
+        $MengeH=$pdo->query($sqlMengeH);
+        $MengeHNummer="mengeH$i";
+        Core::$view->$MengeHNummer=$MengeH;
+        //Ende Menge im Herbst
+        
+        //Regnerischste Tag im Herbst
+        $sqlRegnerischH="SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc limit 1";
+        $RegnerischH=$pdo->query($sqlRegnerischH);
+        $RegnerischHNummer="regnerischH$i";
+        Core::$view->$RegnerischHNummer=$RegnerischH;
+        //Ende Regnerischste Tag im Herbst
+        
+        //Regnerischste Tag im Herbst
+        $sqlTrockenH="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts)) t GROUP BY tage desc limit 1";
+        $TrockenH=$pdo->query($sqlTrockenH);
+        $TrockenHNummer="trockenH$i";
+        Core::$view->$TrockenHNummer=$TrockenH;
+        //Ende Regnerischste Tag im Herbst
+        
+        //Menge im Winter
+        $sqlMengeW="SELECT AVG(RS) FROM niederschlagdaily WHERE station=$stat AND RS>-999 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%')";
+        $MengeW=$pdo->query($sqlMengeW);
+        $MengeWNummer="mengeW$i";
+        Core::$view->$MengeWNummer=$MengeW;
+        //Ende Menge im Winter
+        
+        //Regnerischste Tag im Winter
+        $sqlRegnerischW="SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc limit 1";
+        $RegnerischW=$pdo->query($sqlRegnerischW);
+        $RegnerischWNummer="regnerischW$i";
+        Core::$view->$RegnerischWNummer=$RegnerischW;
+        //Ende Regnerischste Tag im Winter
+        
+        //Regnerischste Tag im Winter
+        $sqlTrockenW="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts)) t GROUP BY tage desc limit 1";
+        $TrockenW=$pdo->query($sqlTrockenW);
+        $TrockenWNummer="trockenW$i";
+        Core::$view->$TrockenWNummer=$TrockenW;
+        //Ende Regnerischste Tag im Winter
     
     $i++;
 }
