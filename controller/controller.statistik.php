@@ -295,14 +295,14 @@ foreach($dieStation as $stat){
         //Ende Menge im Frühling
         
         //Regnerischste Tag im Frühling
-        $sqlRegnerischF="SELECT * FROM (SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc";
+        $sqlRegnerischF="SELECT * FROM (SELECT ts, max(RS) AS menge FROM niederschlagdaily WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts))t GROUP BY t.menge desc limit 1";
         $RegnerischF=$pdo->query($sqlRegnerischF);
         $RegnerischFNummer="regnerischF$i";
         Core::$view->$RegnerischFNummer=$RegnerischF;
         //Ende Regnerischste Tag im Frühling
         
         //Regnerischste Tag im Frühling
-        $sqlTrockenF="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY tage desc";
+        $sqlTrockenF="SELECT * FROM (SELECT ts, COUNT(RS) AS tage FROM niederschlagdaily WHERE station=$stat AND RS=0 AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY tage desc limit 1";
         $TrockenF=$pdo->query($sqlTrockenF);
         $TrockenFNummer="trockenF$i";
         Core::$view->$TrockenFNummer=$TrockenF;

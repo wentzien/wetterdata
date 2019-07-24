@@ -644,10 +644,34 @@
            </tr> 
            <tr>
             <td>Regnerischste Tag im <strong style="color:green">Frühling</strong></td>
-            
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameRegnerischF="regnerischF$t";
+                    $RegnerischF=core::$view->$NameRegnerischF;
+                    foreach($RegnerischF as $row){
+                    $regnerischf=$row['menge'];
+                    $regnerischfZeit=$row['ts'];
+                    $regnerischfZeitrest = substr($regnerischfZeit, 0, -15);
+                    $regnerischfRound=round( $regnerischf, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$regnerischfRound mm/m²</strong></td><td>$regnerischfZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Längste Trockenzeit im <strong style="color:green">Frühling</strong></td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameTrockenF="trockenF$t";
+                $TrockenF=core::$view->$NameTrockenF;
+                foreach($TrockenF as $row){
+                $trockenf=$row['tage'];
+                echo("<td><strong>$trockenf Tage</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Menge im <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
