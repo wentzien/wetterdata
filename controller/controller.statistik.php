@@ -33,10 +33,6 @@ Core::$view->length=$length;
 $i=0;
 foreach($dieStation as $stat){
     
-    //Übergabe der StationsID
-    $stationsNummer="stationID$i";
-    Core::$view->$stationsNummer=$stat;
-    
     //----------------------------------------------------------------------
         //Tabellen-Daten gefiltert nach ausgewählten Zeitraum
 
@@ -158,6 +154,35 @@ foreach($dieStation as $stat){
         $HeuteMinRegenNummer="minRegen$i";
         Core::$view->$HeuteMinRegenNummer=$MinRegenheute;
         //Ende Min-Niederschlag
+        
+        //----------------------------------------------------------------------
+        //Tabellen-Daten ungefiltert nach Temperatur
+        
+        //Stationsnamen
+        $sqlStationNiederschlag="select stationsname from Stationen where id=$stat";
+        $stationNiederschlag=$pdo->query($sqlStationNiederschlag);
+        $stationNameNiederschlag="stationNiederschlag$i";
+        Core::$view->$stationNameNiederschlag=$stationNiederschlag;
+        //Ende Stationsname
+        
+        //Heißester Frühling
+        $sqlHotF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%' GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HotFheute=$pdo->query($sqlHotF);
+        $HeuteHotFNummer="hotF$i";
+        Core::$view->$HeuteHotFNummer=$HotFheute;
+        //Ende Heißester Frühling
+        
+        //Kältester Frühling
+        $sqlColdF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%' GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $ColdFheute=$pdo->query($sqlColdF);
+        $HeuteColdFNummer="coldF$i";
+        Core::$view->$HeuteColdFNummer=$ColdFheute;
+        //Ende Kältester Frühling        
+        
+        //----------------------------------------------------------------------
+        //Tabellen-Daten ungefiltert nach Niederschlag
+        
+        
     
     $i++;
 }

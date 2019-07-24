@@ -323,23 +323,50 @@
             <th>Temperaturstatistik</th>
             <!--Stationsnamen in die Tabelle schreiben-->
             <?php
-                $length=core::$view->length;
                 for($t=0; $t<$length; $t++){
                 $row="";
-                $stationNameTabelle="stationTabelle$t";
-                $stationTabelle=core::$view->$stationNameTabelle;
-                foreach($stationTabelle as $row){
-                $stationNT=$row['stationsname'];
-                echo("<th>$stationNT</th><th></th>");
+                $stationNameNiederschlag="stationNiederschlag$t";
+                $stationNiederschlag=core::$view->$stationNameNiederschlag;
+                foreach($stationNiederschlag as $row){
+                $stationNN=$row['stationsname'];
+                echo("<th>$stationNN</th><th></th>");
                 }
                 }
             ?>
           </tr>
            <tr>
                <td>Heißester <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameHotF="hotF$t";
+                    $HotF=core::$view->$NameHotF;
+                    foreach($HotF as $row){
+                    $hotf=$row['average'];
+                    $hotfZeit=$row['ts'];
+                    $hotfZeitrest = substr($hotfZeit, 0, -15);
+                    $hotfRound=round( $hotf, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$hotfRound °C</strong></td><td>$hotfZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Kältester <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
+            <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameColdF="coldF$t";
+                    $ColdF=core::$view->$NameColdF;
+                    foreach($ColdF as $row){
+                    $coldf=$row['average'];
+                    $coldfZeit=$row['ts'];
+                    $coldfZeitrest = substr($coldfZeit, 0, -15);
+                    $coldfRound=round( $coldf, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$coldfRound °C</strong></td><td>$coldfZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Höchste Messung im <strong style="color:green">Frühling</strong></td>
@@ -393,7 +420,6 @@
             <th>Niederschlagsstatistik</th>
             <!--Stationsnamen in die Tabelle schreiben-->
             <?php
-                $length=core::$view->length;
                 for($t=0; $t<$length; $t++){
                 $row="";
                 $stationNameTabelle="stationTabelle$t";
