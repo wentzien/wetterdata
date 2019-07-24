@@ -220,6 +220,62 @@ foreach($dieStation as $stat){
         $HeuteLowSNummer="lowS$i";
         Core::$view->$HeuteLowSNummer=$LowSheute;
         //Ende Niedrigste Messung Sommer
+        
+        //Heißester Herbst
+        $sqlHotH="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HotHheute=$pdo->query($sqlHotH);
+        $HeuteHotHNummer="hotH$i";
+        Core::$view->$HeuteHotHNummer=$HotHheute;
+        //Ende Heißester Herbst
+        
+        //Kältester Herbst
+        $sqlColdH="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $ColdHheute=$pdo->query($sqlColdH);
+        $HeuteColdHNummer="coldH$i";
+        Core::$view->$HeuteColdHNummer=$ColdHheute;
+        //Ende Kältester Herbst     
+        
+        //Höchste Messung Herbst
+        $sqlHighH="SELECT t.ts, t.average FROM (SELECT ts, max(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HighHheute=$pdo->query($sqlHighH);
+        $HeuteHighHNummer="highH$i";
+        Core::$view->$HeuteHighHNummer=$HighHheute;
+        //Ende Höchste Messung Herbst
+
+        //Niedrigste Messung Herbst
+        $sqlLowH="SELECT t.ts, t.average FROM (SELECT ts, min(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-09-%' OR ts LIKE '%-10-%' OR ts LIKE '%-11-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $LowHheute=$pdo->query($sqlLowH);
+        $HeuteLowHNummer="lowH$i";
+        Core::$view->$HeuteLowHNummer=$LowHheute;
+        //Ende Niedrigste Messung Herbst
+        
+        //Heißester Winter
+        $sqlHotW="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HotWheute=$pdo->query($sqlHotW);
+        $HeuteHotWNummer="hotW$i";
+        Core::$view->$HeuteHotWNummer=$HotWheute;
+        //Ende Heißester Winter
+        
+        //Kältester Winter
+        $sqlColdW="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $ColdWheute=$pdo->query($sqlColdW);
+        $HeuteColdWNummer="coldW$i";
+        Core::$view->$HeuteColdWNummer=$ColdWheute;
+        //Ende Kältester Winter    
+        
+        //Höchste Messung Winter
+        $sqlHighW="SELECT t.ts, t.average FROM (SELECT ts, max(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HighWheute=$pdo->query($sqlHighW);
+        $HeuteHighWNummer="highW$i";
+        Core::$view->$HeuteHighWNummer=$HighWheute;
+        //Ende Höchste Messung Winter
+
+        //Niedrigste Messung Winter
+        $sqlLowW="SELECT t.ts, t.average FROM (SELECT ts, min(temp20) AS average FROM Temperatur WHERE station=$stat AND temp20>-999 AND (ts LIKE '%-12-%' OR ts LIKE '%-01-%' OR ts LIKE '%-02-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $LowWheute=$pdo->query($sqlLowW);
+        $HeuteLowWNummer="lowW$i";
+        Core::$view->$HeuteLowWNummer=$LowWheute;
+        //Ende Niedrigste Messung Winter
 
         //----------------------------------------------------------------------
         //Tabellen-Daten ungefiltert nach Niederschlag
