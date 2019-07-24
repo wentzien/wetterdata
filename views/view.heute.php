@@ -371,7 +371,7 @@ var chart3 = new CanvasJS.Chart("chartContainerFeuchte", {
                         //Ende Ausgabe des Stationsnamen
             echo('",
 		type: "column",
-		yValueFormatString: "#0.## %",
+		yValueFormatString: "",
 		showInLegend: true,
 		dataPoints: ['); 
                         //Ausgabe der Temp Werte
