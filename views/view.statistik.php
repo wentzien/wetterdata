@@ -5,7 +5,7 @@
 <!--Ortsauswahl-->
 <!--Datumsfilterung-->
 
-<form action="?task=historie" method="post" data-ajax='false'>
+<form action="?task=statistik" method="post" data-ajax='false'>
     <select name="ausgewStation[]" id="select-custom-24" data-native-menu="false" multiple="multiple" data-iconpos="left">
         <option>Ortsauswahl</option>
         <?php

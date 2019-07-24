@@ -37,74 +37,64 @@ foreach($dieStation as $stat){
     $stationsNummer="stationID$i";
     Core::$view->$stationsNummer=$stat;
     
-    //Übergabe der Temp Werte
-    $sqltemp="select temp20, canvasts from Temperatur where station=$stat AND temp20>-273 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
-    $tempheute=$pdo->query($sqltemp);
-    $HeuteTempNummer="heuteTemp$i";
-    Core::$view->$HeuteTempNummer=$tempheute;
+    //----------------------------------------------------------------------
+        //Tabellen-Daten
 
-    //Übergabe des Luftdrucks
-    $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
-    $druckheute=$pdo->query($sqldruck);
-    $HeuteDruckNummer="heuteDruck$i";
-    Core::$view->$HeuteDruckNummer=$druckheute;
-    //Ende Übergabe des Luftdrucks
-
-    //Übergabe Luftfeuchtigkeit
-    $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND feuchte>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
-    $feuchteheute=$pdo->query($sqlfeuchte);
-    $HeuteFeuchteNummer="heuteFeuchte$i";
-    Core::$view->$HeuteFeuchteNummer=$feuchteheute;
-    //Ende Übergabe der Luftfeuchtigkeit
-
-    //Übergabe des Taupunktes
-    $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND taupunkt>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
-    $taupunktheute=$pdo->query($sqltaupunkt);
-    $HeuteTaupunktNummer="heuteTaupunkt$i";
-    Core::$view->$HeuteTaupunktNummer=$taupunktheute;
-    //Ende Übergabe des Taupunkt
-    
-    //Übergabe Niederschlag
-    $sqlniederschlag="select RS, canvasts from niederschlagdaily where station=$stat AND RS>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
-    $niederschlagheute=$pdo->query($sqlniederschlag);
-    $HeuteniederschlagNummer="heuteniederschlag$i";
-    Core::$view->$HeuteniederschlagNummer=$niederschlagheute;
-    //Ende Übergabe der Niederschlag
-
-    //Übergabe  des Stationsnamen an TempDiagramm
-    $sqlStationTemp="select stationsname from Stationen where id=$stat";
-    $stationTemp=$pdo->query($sqlStationTemp);
-    $stationNameTemp="stationTemp$i";
-    Core::$view->$stationNameTemp=$stationTemp;
-    //Ende Übergabe Stationsnamen
-
-    //Übergabe des Stationsnamen an DruckDiagramm
-    $sqlStationDruck="select stationsname from Stationen where id=$stat";
-    $stationDruck=$pdo->query($sqlStationDruck);
-    $stationNameDruck="stationDruck$i";
-    Core::$view->$stationNameDruck=$stationDruck;
-    //Ende Übergabe des Stationsnamen
-
-    //Übergabe des Stationsnamen an FeuchteDiagramm
-    $sqlStationFeuchte="select stationsname from Stationen where id=$stat";
-    $stationFeuchte=$pdo->query($sqlStationFeuchte);
-    $stationNameFeuchte="stationFeuchte$i";
-    Core::$view->$stationNameFeuchte=$stationFeuchte;
-    //Ende Übergabe des Stationsnamen
-
-    //Übergabe des Stationsnamen an TauDiagramm
-    $sqlStationTau="select stationsname from Stationen where id=$stat";
-    $stationTau=$pdo->query($sqlStationTau);
-    $stationNameTau="stationTau$i";
-    Core::$view->$stationNameTau=$stationTau;
-    //Ende Übergabe des Stationsnamen
-    
-    //Übergabe des Stationsnamen an NiederschlagDiagramm
-    $sqlStationniederschlag="select stationsname from Stationen where id=$stat";
-    $stationniederschlag=$pdo->query($sqlStationniederschlag);
-    $stationNameniederschlag="stationniederschlag$i";
-    Core::$view->$stationNameniederschlag=$stationniederschlag;
-    //Ende Übergabe des Stationsnamen
+        //Stationsnamen
+        $sqlStationTabelle="select stationsname from Stationen where id=$stat";
+        $stationTabelle=$pdo->query($sqlStationTabelle);
+        $stationNameTabelle="stationTabelle$i";
+        Core::$view->$stationNameTabelle=$stationTabelle;
+        //Ende Stationsname
+        
+        //aktuellste Temp Wert
+        $sqlAktTemp="select temp20, ts from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' order by ts desc limit 1";
+        $AktTempheute=$pdo->query($sqlAktTemp);
+        $HeuteAktTempNummer="aktTemp$i";
+        Core::$view->$HeuteAktTempNummer=$AktTempheute;
+        //Ende aktuellste Temp Wert
+        
+        //Durchschnittstemperatur
+        $sqlAvgTemp="select AVG(temp20) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $AvgTempheute=$pdo->query($sqlAvgTemp);
+        $HeuteAvgTempNummer="avgTemp$i";
+        Core::$view->$HeuteAvgTempNummer=$AvgTempheute;
+        //Ende Durchschnittstemperatur
+        
+        //Max-Temperatur
+        $sqlMaxTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MAX(temp20) FROM Temperatur WHERE station=$stat ts>'$datumVon%' AND ts<'$datumBis%') AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' limit 1";
+        $MaxTempheute=$pdo->query($sqlMaxTemp);
+        $HeuteMaxTempNummer="maxTemp$i";
+        Core::$view->$HeuteMaxTempNummer=$MaxTempheute;
+        //Ende Max-Temperatur
+        
+        //Min-Temperatur
+        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%') AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' limit 1";
+        $MinTempheute=$pdo->query($sqlMinTemp);
+        $HeuteMinTempNummer="minTemp$i";
+        Core::$view->$HeuteMinTempNummer=$MinTempheute;
+        //Ende Max-Temperatur
+        
+        //Durchschnitts Luftdruck
+        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $AvgDruckheute=$pdo->query($sqlAvgDruck);
+        $HeuteAvgDruckNummer="avgDruck$i";
+        Core::$view->$HeuteAvgDruckNummer=$AvgDruckheute;
+        //Ende Durchschnitts Luftdruck
+        
+        //Durchschnitts Luftfeuchtigkeit
+        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $AvgFeuchteheute=$pdo->query($sqlAvgFeuchte);
+        $HeuteAvgFeuchteNummer="avgFeuchte$i";
+        Core::$view->$HeuteAvgFeuchteNummer=$AvgFeuchteheute;
+        //Ende Durchschnitts Luftfeuchtigkeit
+        
+        //Durchschnitts Taupunkt
+        $sqlAvgTau="select AVG(taupunkt) from Temperatur where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%'";
+        $AvgTauheute=$pdo->query($sqlAvgTau);
+        $HeuteAvgTauNummer="avgTau$i";
+        Core::$view->$HeuteAvgTauNummer=$AvgTauheute;
+        //Ende Durchschnitts Taupunkt
     
     $i++;
 }
