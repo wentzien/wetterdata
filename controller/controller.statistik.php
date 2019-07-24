@@ -166,19 +166,34 @@ foreach($dieStation as $stat){
         //Ende Stationsname
         
         //Heißester Frühling
-        $sqlHotF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%' GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $sqlHotF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
         $HotFheute=$pdo->query($sqlHotF);
         $HeuteHotFNummer="hotF$i";
         Core::$view->$HeuteHotFNummer=$HotFheute;
         //Ende Heißester Frühling
         
         //Kältester Frühling
-        $sqlColdF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%' GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $sqlColdF="SELECT t.ts, t.average FROM (SELECT ts, avg(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
         $ColdFheute=$pdo->query($sqlColdF);
         $HeuteColdFNummer="coldF$i";
         Core::$view->$HeuteColdFNummer=$ColdFheute;
         //Ende Kältester Frühling        
         
+        //Höchste Messung Frühling
+        $sqlHighF="SELECT t.ts, t.average FROM (SELECT ts, max(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY t.average desc LIMIT 1";
+        $HighFheute=$pdo->query($sqlHighF);
+        $HeuteHighFNummer="highF$i";
+        Core::$view->$HeuteHighFNummer=$HighFheute;
+        //Ende Höchste Messung Frühling
+
+        //Niedrigste Messung Frühling
+        $sqlLowF="SELECT t.ts, t.average FROM (SELECT ts, min(temp20) AS average FROM Temperatur WHERE station=$stat AND (ts LIKE '%-03-%' OR ts LIKE '%-04-%' OR ts LIKE '%-05-%') GROUP BY YEAR(ts)) t GROUP BY t.average asc LIMIT 1";
+        $LowFheute=$pdo->query($sqlLowF);
+        $HeuteLowFNummer="lowF$i";
+        Core::$view->$HeuteLowFNummer=$LowFheute;
+        //Ende Niedrigste Messung Frühling 
+        
+
         //----------------------------------------------------------------------
         //Tabellen-Daten ungefiltert nach Niederschlag
         

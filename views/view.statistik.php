@@ -370,9 +370,37 @@
            </tr>
            <tr>
             <td>Höchste Messung im <strong style="color:green">Frühling</strong></td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameHighF="highF$t";
+                    $HighF=core::$view->$NameHighF;
+                    foreach($HighF as $row){
+                    $highf=$row['average'];
+                    $highfZeit=$row['ts'];
+                    $highfZeitrest = substr($highfZeit, 0, -15);
+                    $highfRound=round( $highf, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$highfRound °C</strong></td><td>$highfZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Niedrigste Messung im <strong style="color:green">Frühling</strong></td>
+                <?php
+                for($t=0; $t<$length; $t++){
+                    $row="";
+                    $NameLowF="lowF$t";
+                    $LowF=core::$view->$NameLowF;
+                    foreach($LowF as $row){
+                    $lowf=$row['average'];
+                    $lowfZeit=$row['ts'];
+                    $lowfZeitrest = substr($lowfZeit, 0, -15);
+                    $lowfRound=round( $lowf, 2, PHP_ROUND_HALF_UP);
+                    echo("<td><strong>$lowfRound °C</strong></td><td>$lowfZeitrest</td>");
+                    }
+                    }
+                ?>
            </tr>
            <tr>
             <td>Heißester <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
