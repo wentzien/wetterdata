@@ -123,6 +123,41 @@ foreach($dieStation as $stat){
         $HeuteMinFeuchteNummer="minFeuchte$i";
         Core::$view->$HeuteMinFeuchteNummer=$MinFeuchteheute;
         //Ende Min-Luftfeuchtigkeit
+        
+        //Max-Taupunkt
+        $sqlMaxTau="SELECT taupunkt, ts from Temperatur WHERE taupunkt=(SELECT MAX(taupunkt) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and taupunkt>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and taupunkt>-999 limit 1";
+        $MaxTauheute=$pdo->query($sqlMaxTau);
+        $HeuteMaxTauNummer="maxTau$i";
+        Core::$view->$HeuteMaxTauNummer=$MaxTauheute;
+        //Ende Max-Taupunkt
+        
+        //Min-Taupunkt
+        $sqlMinTau="SELECT taupunkt, ts from Temperatur WHERE taupunkt=(SELECT MIN(taupunkt) FROM Temperatur WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and taupunkt>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and taupunkt>-999 limit 1";
+        $MinTauheute=$pdo->query($sqlMinTau);
+        $HeuteMinTauNummer="minTau$i";
+        Core::$view->$HeuteMinTauNummer=$MinTauheute;
+        //Ende Min-Taupunkt
+        
+        //Durchschnitts Niederschlag
+        $sqlAvgRegen="select AVG(RS) from niederschlagdaily where station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and RS>-999";
+        $AvgRegenheute=$pdo->query($sqlAvgRegen);
+        $HeuteAvgRegenNummer="avgRegen$i";
+        Core::$view->$HeuteAvgRegenNummer=$AvgRegenheute;
+        //Ende Durchschnitts Niederschlag
+        
+        //Max-Niederschlag
+        $sqlMaxRegen="SELECT RS, ts from niederschlagdaily WHERE RS=(SELECT MAX(RS) FROM niederschlagdaily WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and RS>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and RS>-999 limit 1";
+        $MaxRegenheute=$pdo->query($sqlMaxRegen);
+        $HeuteMaxRegenNummer="maxRegen$i";
+        Core::$view->$HeuteMaxRegenNummer=$MaxRegenheute;
+        //Ende Max-Niederschlag
+        
+        //Min-Niederschlag
+        $sqlMinRegen="SELECT RS, ts from niederschlagdaily WHERE RS=(SELECT MIN(RS) FROM niederschlagdaily WHERE station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and RS>-999) AND station=$stat AND ts>'$datumVon%' AND ts<'$datumBis%' and RS>-999 limit 1";
+        $MinRegenheute=$pdo->query($sqlMinRegen);
+        $HeuteMinRegenNummer="minRegen$i";
+        Core::$view->$HeuteMinRegenNummer=$MinRegenheute;
+        //Ende Min-Niederschlag
     
     $i++;
 }

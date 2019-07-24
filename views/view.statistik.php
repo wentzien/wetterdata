@@ -228,18 +228,86 @@
            </tr>
            <tr>
             <td>Max-Taupunkttemperatur</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMaxTau="maxTau$t";
+                $MaxTau=core::$view->$NameMaxTau;
+                foreach($MaxTau as $row){
+                $maxtau=$row['taupunkt'];
+                $maxtauZeit=$row['ts'];
+                $maxtauZeitrest = substr($maxtauZeit, 0, -9);
+                $maxtauRound=round( $maxtau, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$maxtauRound °C</strong></td><td>$maxtauZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
-            <td>Min-Luftdruck</td>
+            <td>Min-Taupunkttemperatur</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMinTau="minTau$t";
+                $MinTau=core::$view->$NameMinTau;
+                foreach($MinTau as $row){
+                $mintau=$row['taupunkt'];
+                $mintauZeit=$row['ts'];
+                $mintauZeitrest = substr($mintauZeit, 0, -9);
+                $mintauRound=round( $mintau, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$mintauRound °C</strong></td><td>$mintauZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Durchschnitts-Niederschlagsmenge</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameAvgRegen="avgRegen$t";
+                $AvgRegen=core::$view->$NameAvgRegen;
+                foreach($AvgRegen as $row){
+                $avgregen=$row['AVG(RS)'];
+                $avgregenRound=round( $avgregen, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$avgregenRound mm/m²</strong></td><td>-</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Max-Niederschlagsmenge</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMaxRegen="maxRegen$t";
+                $MaxRegen=core::$view->$NameMaxRegen;
+                foreach($MaxRegen as $row){
+                $maxregen=$row['RS'];
+                $maxregenZeit=$row['ts'];
+                $maxregenZeitrest = substr($maxregenZeit, 0, -9);
+                $maxregenRound=round( $maxregen, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$maxregenRound mm/m²</strong></td><td>$maxregenZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
            <tr>
             <td>Min-Niederschlagsmenge</td>
+            <?php
+            for($t=0; $t<$length; $t++){
+                $row="";
+                $NameMinRegen="minRegen$t";
+                $MinRegen=core::$view->$NameMinRegen;
+                foreach($MinRegen as $row){
+                $minregen=$row['RS'];
+                $minregenZeit=$row['ts'];
+                $minregenZeitrest = substr($minregenZeit, 0, -9);
+                $minregenRound=round( $minregen, 2, PHP_ROUND_HALF_UP);
+                echo("<td><strong>$minregenRound mm/m²</strong></td><td>$minregenZeitrest</td>");
+                }
+                }
+            ?>
            </tr>
         </table>
     </div>
