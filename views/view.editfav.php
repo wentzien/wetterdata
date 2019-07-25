@@ -41,7 +41,7 @@ echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n"
 </form>
 
 
-
+<center><label><h1><?php echo("Du hast deine Station nicht in der Liste gefunden? Dann versuche es doch mal hier") ?></h1></label></center>
 
 
 
@@ -50,6 +50,8 @@ echo("<option value=".$station['id']." >".$station['stationsname']."</option>\n"
             <label for="stationname">Stationsname:</label><input id="Stationsname" placeholder="Suchen" name="stationname" onkeyup="ajaxpost(this, 'editfav', 'view2')"/>    
         </div>
 </form>
+
+
 
 
 

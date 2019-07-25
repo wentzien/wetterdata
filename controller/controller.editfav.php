@@ -8,7 +8,14 @@
 $uID=Core::$user->m_oid;
 $pdo = Core::$pdo;
 if ((filter_input(INPUT_POST,"addfav",FILTER_SANITIZE_STRING)) <> ""){
-$Statide=filter_input(INPUT_POST,"addfav",FILTER_SANITIZE_STRING);
+    $Statide=filter_input(INPUT_POST,"addfav",FILTER_SANITIZE_STRING);
+    if((filter_input(INPUT_POST,"statname",FILTER_SANITIZE_STRING)) <> ""){
+    $Statname=filter_input(INPUT_POST,"statname",FILTER_SANITIZE_STRING);
+    $SQLnewstat = "INSERT INTO Stationen (id,stationsname) VALUES ($Statide, '$Statname')";
+    $pdo->query($SQLnewstat);
+    }
+    
+
 $SQLaddfav = "INSERT INTO favoriten (UserID, StationID) VALUES ($uID, $Statide)";
 $pdo->query($SQLaddfav);
 }
@@ -19,7 +26,7 @@ $pdo->query($SQLdellfav);
     
 };
 
-$SQLallStat="SELECT * FROM Stationen LEFT JOIN favoriten ON Stationen.id = favoriten.StationID WHERE (UserID IS Null OR UserID <> 2)order by stationsname";
+$SQLallStat="SELECT * FROM Stationen LEFT JOIN favoriten ON Stationen.id = favoriten.StationID WHERE (UserID IS Null OR UserID <> $uID)order by stationsname";
 $allStat=$pdo->query($SQLallStat);
 $SQLallfavs="SELECT * FROM favoriten LEFT JOIN Stationen ON favoriten.Stationid = Stationen.ID Where UserID=$uID";
 $allfavs=$pdo->query($SQLallfavs);
@@ -33,7 +40,7 @@ if(count($_POST)>0){
     $pdo = Core::$pdo;
     $search= "'%".filter_input(INPUT_POST,"stationname")."%'";
     if($search<>"'%%'"){
-    $SQLstat= "SELECT * From alleStationen WHERE stationsname LIKE$search";
+    $SQLstat= "SELECT * FROM alleStationen LEFT JOIN Stationen ON alleStationen.statid = Stationen.id Where  (Stationen.stationsname is NULL) AND  statname LIKE $search order by stationsname";
     $stationsliste=$pdo->query($SQLstat);
     }
 }

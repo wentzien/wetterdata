@@ -14,11 +14,12 @@ $liste=Core::$view->station;
      
    ?>
 <tr>
-      <td><?=$item['id']?></td>  
-      <td><?=$item['stationsname']?></td>     
+      <td><?=$item['statid']?></td>  
+      <td><?=$item['statname']?></td>     
       <td>
           <form action="?task=editfav" method="post">
-              <input type=hidden name="addfav" value="<?=$item['id']?>">
+              <input type=hidden name="addfav" value="<?=$item['statid']?>">
+              <input type=hidden name="statname" value="<?=$item['statname']?>">
         <input type="submit" name="editfav" value="Station hinzufügen">
         </form>
       </td>
