@@ -1,9 +1,12 @@
 <?php
 $liste=Core::$view->station;
 ?>
-<table data-role="table" id="allstations" data-mode="column-toggle: none" class="ui-responsive">
+<center>
+    <div class="ui-body ui-body-a">
+<table data-role="table" id="allstations" data-mode="column-toggle: none" class="ui-body ui-body-a ui-responsive">
   <thead>
-    <tr>     
+    <tr>
+      
       <th data-priority="persist">Stationname</th>
     </tr>
   </thead>
@@ -14,13 +17,13 @@ $liste=Core::$view->station;
      
    ?>
 <tr>
-      <td><?=$item['statid']?></td>  
+        
       <td><?=$item['statname']?></td>     
       <td>
           <form action="?task=editfav" method="post">
               <input type=hidden name="addfav" value="<?=$item['statid']?>">
               <input type=hidden name="statname" value="<?=$item['statname']?>">
-        <input type="submit" name="editfav" value="Station hinzufügen">
+        <input type="submit" name="editfav" value="Hinzufügen" class="ui-body ui-body-a ui-icon-check ui-responsive">
         </form>
       </td>
      
@@ -29,4 +32,7 @@ $liste=Core::$view->station;
 ?>
   </tbody>
 </table>
+        </div>
+</center>
+
 
