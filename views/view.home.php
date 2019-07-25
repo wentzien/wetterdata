@@ -61,7 +61,7 @@ if($user->vorname!=""){
       <li><a href="#three" data-ajax="false">Niederschlag</a></li>
     </ul>
   </div>
-<div id="one" class="ui-body-d ui-content">
+<div id="one" class="ui-body-d ui-content ui-responsive">
     <h3> Die 10 höchsten Temperaturwerte die in Deutschland gemessen wurden</h3>
     
     <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
@@ -90,7 +90,7 @@ if($user->vorname!=""){
       </tbody>
       </table>
 </div>
-  <div id="two" class="ui-body-d ui-content">
+  <div id="two" class="ui-body-d ui-content ui-responsive">
 <h3> Die 10 höchsten Luftdruckwerte die in Deutschland gemessen wurden</h3>
     
     <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
@@ -112,7 +112,7 @@ if($user->vorname!=""){
     <tr>
           <td><?=$i?></td>
           <td><?=$item['stationsname']?></td>
-          <td><?=$item['Luftdruck']?></td>
+          <td><?=round( $item['Luftdruck'], 2, PHP_ROUND_HALF_UP)?></td>
           <td><?=date(DATE_RFC850,$item['ts'])?></td>
           </tr>
     
@@ -121,7 +121,7 @@ if($user->vorname!=""){
     </table>
   </div>
     
-    <div id="three" class="ui-body-d ui-content">
+    <div id="three" class="ui-body-d ui-content ui-responsive">
 
         
         <h3> Die 10 höchsten relativen Luftfeuchtigskeitswerte die in Deutschland gemessen wurden</h3>
@@ -161,8 +161,8 @@ if($user->vorname!=""){
     
         <center>
             <br>
-        <div class="ui-corner-all custom-corners">
-        <div class="ui-bar ui-bar-a">
+        <div class="ui-corner-all custom-corners ui-responsive">
+        <div class="ui-bar ui-bar-a ui-responsive">
         <center><h1>Übersicht zu den Datensätzen</h1></center>
         </div>
            <?php 
@@ -191,7 +191,7 @@ if($user->vorname!=""){
                     foreach($listalldataqualthree as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         };                        
                         
                     };          
@@ -204,7 +204,7 @@ if($user->vorname!=""){
                     foreach($listalldata as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -215,7 +215,7 @@ if($user->vorname!=""){
                     foreach($listmissval as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -227,8 +227,8 @@ if($user->vorname!=""){
                 <?php                
                     foreach($listdataairavg as $row){
                         foreach($row as $layer)
-                            {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -238,8 +238,8 @@ if($user->vorname!=""){
                 <?php                
                     foreach($listdatahumiavg as $row){
                         foreach($row as $layer)
-                            {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -251,8 +251,8 @@ if($user->vorname!=""){
                 <?php                
                     foreach($listdatameltavg as $row){
                         foreach($row as $layer)
-                            {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -266,8 +266,8 @@ if($user->vorname!=""){
                 <?php                
                     foreach($listdatatempavg as $row){
                         foreach($row as $layer)
-                            {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?> 
@@ -284,7 +284,7 @@ if($user->vorname!=""){
                     foreach($listmindate as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?>                 
@@ -295,7 +295,7 @@ if($user->vorname!=""){
                     foreach($listmaxdate as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<th>$value</th><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><th></th>");
                         }; 
                     };   
                 ?>  
