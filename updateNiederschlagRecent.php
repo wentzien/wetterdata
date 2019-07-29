@@ -1,10 +1,23 @@
 <?php 
 ini_set("max_execution_time", 36000);
 
-$stationen=array();
-//$stationen[]="03925";
-$stationen[]="03362";
+$database="wetterdata";
+$host="141.47.2.40";
+$user="wetterdata";
+$password="wvgnigt";
+        
+$pdo = new PDO("mysql:host=".$host.";dbname=".$database.";charset=utf8",$user,$password);
+$pdo->setAttribute( PDO::ATTR_EMULATE_PREPARES,true);
+$pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING ); // For Debugging
 
+//Ruft alle Stationen ab, die eingespielt werden müssen
+$sqlstationen="select id from Stationen";
+$querystationen=$pdo->query($sqlstationen);
+
+$stationen=array();
+foreach($querystationen as $row){
+    $stationen[]=$row['id'];
+}
 function DatenEinspielen ($url){
 
 $database="wetterdata";
