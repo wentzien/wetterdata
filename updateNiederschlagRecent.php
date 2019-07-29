@@ -100,7 +100,7 @@ foreach ($stationen as $station) {
     $urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/more_precip/recent/tageswerte_RR_".$station."_akt.zip";
     
     
+//    DatenEinspielen($urlnow);
     DatenEinspielen($urlrecent);
-    //DatenEinspielen($urlrecent);
 }
 ?>
