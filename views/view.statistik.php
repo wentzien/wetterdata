@@ -378,7 +378,7 @@
                     foreach($HighF as $row){
                     $highf=$row['average'];
                     $highfZeit=$row['ts'];
-                    $highfZeitrest = substr($highfZeit, 0, -9);
+                    $highfZeitrest = substr($highfZeit, 0, -15);
                     $highfRound=round( $highf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highfRound °C</strong></td><td>$highfZeitrest</td>");
                     }
@@ -395,7 +395,7 @@
                     foreach($LowF as $row){
                     $lowf=$row['average'];
                     $lowfZeit=$row['ts'];
-                    $lowfZeitrest = substr($lowfZeit, 0, -9);
+                    $lowfZeitrest = substr($lowfZeit, 0, -15);
                     $lowfRound=round( $lowf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowfRound °C</strong></td><td>$lowfZeitrest</td>");
                     }
@@ -446,7 +446,7 @@
                     foreach($HighS as $row){
                     $highs=$row['average'];
                     $highsZeit=$row['ts'];
-                    $highsZeitrest = substr($highsZeit, 0, -9);
+                    $highsZeitrest = substr($highsZeit, 0, -15);
                     $highsRound=round( $highs, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highsRound °C</strong></td><td>$highsZeitrest</td>");
                     }
@@ -463,7 +463,7 @@
                     foreach($LowS as $row){
                     $lows=$row['average'];
                     $lowsZeit=$row['ts'];
-                    $lowsZeitrest = substr($lowsZeit, 0, -9);
+                    $lowsZeitrest = substr($lowsZeit, 0, -15);
                     $lowsRound=round( $lows, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowsRound °C</strong></td><td>$lowsZeitrest</td>");
                     }
@@ -514,7 +514,7 @@
                     foreach($HighH as $row){
                     $highh=$row['average'];
                     $highhZeit=$row['ts'];
-                    $highhZeitrest = substr($highhZeit, 0, -9);
+                    $highhZeitrest = substr($highhZeit, 0, -15);
                     $highhRound=round( $highh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highhRound °C</strong></td><td>$highhZeitrest</td>");
                     }
@@ -531,7 +531,7 @@
                     foreach($LowH as $row){
                     $lowh=$row['average'];
                     $lowhZeit=$row['ts'];
-                    $lowhZeitrest = substr($lowhZeit, 0, -9);
+                    $lowhZeitrest = substr($lowhZeit, 0, -15);
                     $lowhRound=round( $lowh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowhRound °C</strong></td><td>$lowhZeitrest</td>");
                     }
@@ -582,7 +582,7 @@
                     foreach($HighW as $row){
                     $highw=$row['average'];
                     $highwZeit=$row['ts'];
-                    $highwZeitrest = substr($highwZeit, 0, -9);
+                    $highwZeitrest = substr($highwZeit, 0, -15);
                     $highwRound=round( $highw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highwRound °C</strong></td><td>$highwZeitrest</td>");
                     }
@@ -599,7 +599,7 @@
                     foreach($LowW as $row){
                     $loww=$row['average'];
                     $lowwZeit=$row['ts'];
-                    $lowwZeitrest = substr($lowwZeit, 0, -9);
+                    $lowwZeitrest = substr($lowwZeit, 0, -15);
                     $lowwRound=round( $loww, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowwRound °C</strong></td><td>$lowwZeitrest</td>");
                     }
@@ -652,7 +652,7 @@
                     foreach($RegnerischF as $row){
                     $regnerischf=$row['menge'];
                     $regnerischfZeit=$row['ts'];
-                    $regnerischfZeitrest = substr($regnerischfZeit, 0, -9);
+                    $regnerischfZeitrest = substr($regnerischfZeit, 0, -15);
                     $regnerischfRound=round( $regnerischf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischfRound mm/m²</strong></td><td>$regnerischfZeitrest</td>");
                     }
@@ -698,7 +698,7 @@
                     foreach($RegnerischS as $row){
                     $regnerischs=$row['menge'];
                     $regnerischsZeit=$row['ts'];
-                    $regnerischsZeitrest = substr($regnerischsZeit, 0, -9);
+                    $regnerischsZeitrest = substr($regnerischsZeit, 0, -15);
                     $regnerischsRound=round( $regnerischs, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischsRound mm/m²</strong></td><td>$regnerischsZeitrest</td>");
                     }
@@ -744,7 +744,7 @@
                     foreach($RegnerischH as $row){
                     $regnerischh=$row['menge'];
                     $regnerischhZeit=$row['ts'];
-                    $regnerischhZeitrest = substr($regnerischhZeit, 0, -9);
+                    $regnerischhZeitrest = substr($regnerischhZeit, 0, -15);
                     $regnerischhRound=round( $regnerischh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischhRound mm/m²</strong></td><td>$regnerischhZeitrest</td>");
                     }
@@ -790,7 +790,7 @@
                     foreach($RegnerischW as $row){
                     $regnerischw=$row['menge'];
                     $regnerischwZeit=$row['ts'];
-                    $regnerischwZeitrest = substr($regnerischwZeit, 0, -9);
+                    $regnerischwZeitrest = substr($regnerischwZeit, 0, -15);
                     $regnerischwRound=round( $regnerischw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischwRound mm/m²</strong></td><td>$regnerischwZeitrest</td>");
                     }
