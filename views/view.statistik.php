@@ -58,6 +58,9 @@
                 $akttempZeitrest = substr($akttempZeit, 0, -9);
                 echo("<td><strong>$akttemp °C</strong></td><td>$akttempZeitrest</td>");
                 }
+                if($akttemp==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -90,6 +93,9 @@
                 $maxtempRound=round( $maxtemp, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxtempRound °C</strong></td><td>$maxtempZeitrest</td>");
                 }
+                if($maxtemp==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -106,6 +112,9 @@
                 $mintempZeitrest = substr($mintempZeit, 0, -9);
                 $mintempRound=round( $mintemp, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$mintempRound °C</strong></td><td>$mintempZeitrest</td>");
+                }
+                if($mintemp==Null){
+                echo("<td>-</td><td>-</td>");
                 }
                 }
             ?>
@@ -142,6 +151,9 @@
                 $maxdruckRound=round( $maxdruck, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxdruckRound hPa</strong></td><td>$maxdruckZeitrest</td>");
                 }
+                if($maxdruck==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -158,6 +170,9 @@
                 $mindruckZeitrest = substr($mindruckZeit, 0, -9);
                 $mindruckRound=round( $mindruck, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$mindruckRound hPa</strong></td><td>$mindruckZeitrest</td>");
+                }
+                if($mindruck==Null){
+                echo("<td>-</td><td>-</td>");
                 }
                 }
             ?>
@@ -191,6 +206,9 @@
                 $maxfeuchteRound=round( $maxfeuchte, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxfeuchteRound %</strong></td><td>$maxfeuchteZeitrest</td>");
                 }
+                if($maxfeuchte==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -207,6 +225,9 @@
                 $minfeuchteZeitrest = substr($minfeuchteZeit, 0, -9);
                 $minfeuchteRound=round( $minfeuchte, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$minfeuchteRound %</strong></td><td>$minfeuchteZeitrest</td>");
+                }
+                if($minfeuchte==Null){
+                echo("<td>-</td><td>-</td>");
                 }
                 }
             ?>
@@ -240,6 +261,9 @@
                 $maxtauRound=round( $maxtau, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxtauRound °C</strong></td><td>$maxtauZeitrest</td>");
                 }
+                if($maxtau==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -256,6 +280,9 @@
                 $mintauZeitrest = substr($mintauZeit, 0, -9);
                 $mintauRound=round( $mintau, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$mintauRound °C</strong></td><td>$mintauZeitrest</td>");
+                }
+                if($mintau==Null){
+                echo("<td>-</td><td>-</td>");
                 }
                 }
             ?>
@@ -289,6 +316,9 @@
                 $maxregenRound=round( $maxregen, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$maxregenRound mm/m²</strong></td><td>$maxregenZeitrest</td>");
                 }
+                if($maxregen==Null){
+                echo("<td>-</td><td>-</td>");
+                }
                 }
             ?>
            </tr>
@@ -305,6 +335,9 @@
                 $minregenZeitrest = substr($minregenZeit, 0, -9);
                 $minregenRound=round( $minregen, 2, PHP_ROUND_HALF_UP);
                 echo("<td><strong>$minregenRound mm/m²</strong></td><td>$minregenZeitrest</td>");
+                }
+                if($minregen==Null){
+                echo("<td>-</td><td>-</td>");
                 }
                 }
             ?>
