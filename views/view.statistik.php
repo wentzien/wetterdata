@@ -381,6 +381,9 @@
                     $hotfRound=round( $hotf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$hotfRound °C</strong></td><td>$hotfZeitrest</td>");
                     }
+                    if($hotf==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -397,6 +400,9 @@
                     $coldfZeitrest = substr($coldfZeit, 0, -15);
                     $coldfRound=round( $coldf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$coldfRound °C</strong></td><td>$coldfZeitrest</td>");
+                    }
+                    if($coldf==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -415,6 +421,9 @@
                     $highfRound=round( $highf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highfRound °C</strong></td><td>$highfZeitrest</td>");
                     }
+                    if($highf==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -431,6 +440,9 @@
                     $lowfZeitrest = substr($lowfZeit, 0, -15);
                     $lowfRound=round( $lowf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowfRound °C</strong></td><td>$lowfZeitrest</td>");
+                    }
+                    if($lowf==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -449,6 +461,9 @@
                     $hotsRound=round( $hots, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$hotsRound °C</strong></td><td>$hotsZeitrest</td>");
                     }
+                    if($hots==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -465,6 +480,9 @@
                     $coldsZeitrest = substr($coldsZeit, 0, -15);
                     $coldsRound=round( $colds, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$coldsRound °C</strong></td><td>$coldsZeitrest</td>");
+                    }
+                    if($colds==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -483,6 +501,9 @@
                     $highsRound=round( $highs, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highsRound °C</strong></td><td>$highsZeitrest</td>");
                     }
+                    if($highs==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -499,6 +520,9 @@
                     $lowsZeitrest = substr($lowsZeit, 0, -15);
                     $lowsRound=round( $lows, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowsRound °C</strong></td><td>$lowsZeitrest</td>");
+                    }
+                    if($lows==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -517,6 +541,9 @@
                     $hothRound=round( $hoth, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$hothRound °C</strong></td><td>$hothZeitrest</td>");
                     }
+                    if($hoth==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -533,6 +560,9 @@
                     $coldhZeitrest = substr($coldhZeit, 0, -15);
                     $coldhRound=round( $coldh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$coldhRound °C</strong></td><td>$coldhZeitrest</td>");
+                    }
+                    if($colh==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -551,6 +581,9 @@
                     $highhRound=round( $highh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highhRound °C</strong></td><td>$highhZeitrest</td>");
                     }
+                    if($highh==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -567,6 +600,9 @@
                     $lowhZeitrest = substr($lowhZeit, 0, -15);
                     $lowhRound=round( $lowh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowhRound °C</strong></td><td>$lowhZeitrest</td>");
+                    }
+                    if($lowh==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -585,6 +621,9 @@
                     $hotwRound=round( $hotw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$hotwRound °C</strong></td><td>$hotwZeitrest</td>");
                     }
+                    if($hotw==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -601,6 +640,9 @@
                     $coldwZeitrest = substr($coldwZeit, 0, -15);
                     $coldwRound=round( $coldw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$coldwRound °C</strong></td><td>$coldwZeitrest</td>");
+                    }
+                    if($coldw==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -619,6 +661,9 @@
                     $highwRound=round( $highw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$highwRound °C</strong></td><td>$highwZeitrest</td>");
                     }
+                    if($highw==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -635,6 +680,9 @@
                     $lowwZeitrest = substr($lowwZeit, 0, -15);
                     $lowwRound=round( $loww, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$lowwRound °C</strong></td><td>$lowwZeitrest</td>");
+                    }
+                    if($loww==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
@@ -689,6 +737,9 @@
                     $regnerischfRound=round( $regnerischf, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischfRound mm/m²</strong></td><td>$regnerischfZeitrest</td>");
                     }
+                    if($regnerischf==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -703,6 +754,9 @@
                 $trockenf=$row['tage'];
                 echo("<td><strong>$trockenf Tage</strong></td><td>-</td>");
                 }
+                if($trockenf==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                 }
             ?>
            </tr>
@@ -735,6 +789,9 @@
                     $regnerischsRound=round( $regnerischs, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischsRound mm/m²</strong></td><td>$regnerischsZeitrest</td>");
                     }
+                    if($regnerischs==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -749,6 +806,9 @@
                 $trockens=$row['tage'];
                 echo("<td><strong>$trockens Tage</strong></td><td>-</td>");
                 }
+                if($trockens==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                 }
             ?>
            </tr>
@@ -781,6 +841,9 @@
                     $regnerischhRound=round( $regnerischh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischhRound mm/m²</strong></td><td>$regnerischhZeitrest</td>");
                     }
+                    if($regnerischh==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -795,6 +858,9 @@
                 $trockenh=$row['tage'];
                 echo("<td><strong>$trockenh Tage</strong></td><td>-</td>");
                 }
+                if($trockenh==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                 }
             ?>
            </tr>
@@ -827,6 +893,9 @@
                     $regnerischwRound=round( $regnerischw, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$regnerischwRound mm/m²</strong></td><td>$regnerischwZeitrest</td>");
                     }
+                    if($regnerischw==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
            </tr>
@@ -841,6 +910,9 @@
                 $trockenw=$row['tage'];
                 echo("<td><strong>$trockenw Tage</strong></td><td>-</td>");
                 }
+                if($trockenw==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                 }
             ?>
            </tr>
