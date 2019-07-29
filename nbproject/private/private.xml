@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/wetterdata/views/view.home.php</file>
             <file>file:/C:/xampp/htdocs/wetterdata/views/view.editfav.php</file>
+            <file>file:/C:/xampp/htdocs/wetterdata/views/view.heute.php</file>
+            <file>file:/C:/xampp/htdocs/wetterdata/controller/controller.editfav.php</file>
             <file>file:/C:/xampp/htdocs/wetterdata/views/view.stationlist.php</file>
         </group>
     </open-files>

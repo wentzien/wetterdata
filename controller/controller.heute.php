@@ -31,27 +31,27 @@ If ($dieStation<>""){
         Core::$view->$stationsNummer=$stat;
 
         //Übergabe der Temp Werte
-        $sqltemp="select temp20, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $sqltemp="select temp20, canvasts from Temperatur where temp20>-999 AND station=$stat AND ts like '$datum%' order by ts asc";
         $tempheute=$pdo->query($sqltemp);
         $HeuteTempNummer="heuteTemp$i";
         Core::$view->$HeuteTempNummer=$tempheute;
         
         //Übergabe des Luftdrucks
-        $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts like '$datum%' order by ts asc";
+        $sqldruck="select Luftdruck, canvasts from Temperatur where Luftdruck>-999 station=$stat AND Luftdruck>-999 AND ts like '$datum%' order by ts asc";
         $druckheute=$pdo->query($sqldruck);
         $HeuteDruckNummer="heuteDruck$i";
         Core::$view->$HeuteDruckNummer=$druckheute;
         //Ende Übergabe des Luftdrucks
 
         //Übergabe Luftfeuchtigkeit
-        $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $sqlfeuchte="select feuchte, canvasts from Temperatur where feuchte>-999 station=$stat AND ts like '$datum%' order by ts asc";
         $feuchteheute=$pdo->query($sqlfeuchte);
         $HeuteFeuchteNummer="heuteFeuchte$i";
         Core::$view->$HeuteFeuchteNummer=$feuchteheute;
         //Ende Übergabe der Luftfeuchtigkeit
         
         //Übergabe des Taupunktes
-        $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND ts like '$datum%' order by ts asc";
+        $sqltaupunkt="select taupunkt, canvasts from Temperatur where taupunkt>-999 station=$stat AND ts like '$datum%' order by ts asc";
         $taupunktheute=$pdo->query($sqltaupunkt);
         $HeuteTaupunktNummer="heuteTaupunkt$i";
         Core::$view->$HeuteTaupunktNummer=$taupunktheute;
@@ -96,14 +96,14 @@ If ($dieStation<>""){
         //Ende Stationsname
         
         //aktuellste Temp Wert
-        $sqlAktTemp="select temp20, ts from Temperatur where station=$stat AND ts like '$datum%' order by ts desc limit 1";
+        $sqlAktTemp="select temp20, ts from Temperatur where temp20>-999 station=$stat AND ts like '$datum%' order by ts desc limit 1";
         $AktTempheute=$pdo->query($sqlAktTemp);
         $HeuteAktTempNummer="aktTemp$i";
         Core::$view->$HeuteAktTempNummer=$AktTempheute;
         //Ende aktuellste Temp Wert
         
         //Durchschnittstemperatur
-        $sqlAvgTemp="select AVG(temp20) from Temperatur where station=$stat AND ts like '$datum%'";
+        $sqlAvgTemp="select AVG(temp20) from Temperatur where temp20>-999 station=$stat AND ts like '$datum%'";
         $AvgTempheute=$pdo->query($sqlAvgTemp);
         $HeuteAvgTempNummer="avgTemp$i";
         Core::$view->$HeuteAvgTempNummer=$AvgTempheute;
@@ -117,28 +117,28 @@ If ($dieStation<>""){
         //Ende Max-Temperatur
         
         //Min-Temperatur
-        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%' limit 1";
+        $sqlMinTemp="SELECT temp20, ts from Temperatur WHERE temp20=(SELECT MIN(temp20) FROM Temperatur WHERE temp20>-999 station=$stat AND ts LIKE '$datum%') AND station=$stat AND ts LIKE '$datum%' limit 1";
         $MinTempheute=$pdo->query($sqlMinTemp);
         $HeuteMinTempNummer="minTemp$i";
         Core::$view->$HeuteMinTempNummer=$MinTempheute;
         //Ende Max-Temperatur
         
         //Durchschnitts Luftdruck
-        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where station=$stat AND ts like '$datum%'";
+        $sqlAvgDruck="select AVG(Luftdruck) from Temperatur where Luftdruck>-999 station=$stat AND ts like '$datum%'";
         $AvgDruckheute=$pdo->query($sqlAvgDruck);
         $HeuteAvgDruckNummer="avgDruck$i";
         Core::$view->$HeuteAvgDruckNummer=$AvgDruckheute;
         //Ende Durchschnitts Luftdruck
         
         //Durchschnitts Luftfeuchtigkeit
-        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where station=$stat AND ts like '$datum%'";
+        $sqlAvgFeuchte="select AVG(feuchte) from Temperatur where feuchte>-999 station=$stat AND ts like '$datum%'";
         $AvgFeuchteheute=$pdo->query($sqlAvgFeuchte);
         $HeuteAvgFeuchteNummer="avgFeuchte$i";
         Core::$view->$HeuteAvgFeuchteNummer=$AvgFeuchteheute;
         //Ende Durchschnitts Luftfeuchtigkeit
         
         //Durchschnitts Taupunkt
-        $sqlAvgTau="select AVG(taupunkt) from Temperatur where station=$stat AND ts like '$datum%'";
+        $sqlAvgTau="select AVG(taupunkt) from Temperatur where taupunkt>-999 station=$stat AND ts like '$datum%'";
         $AvgTauheute=$pdo->query($sqlAvgTau);
         $HeuteAvgTauNummer="avgTau$i";
         Core::$view->$HeuteAvgTauNummer=$AvgTauheute;
