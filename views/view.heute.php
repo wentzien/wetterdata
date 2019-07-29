@@ -40,6 +40,9 @@
                     $akttempZeitrest = substr($akttempZeit, -8);
                     echo("<td><strong>$akttemp °C</strong></td><td>$akttempZeitrest</td>");
                     }
+                    if($akttemp==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
                </tr>
@@ -72,6 +75,9 @@
                     $maxtempRound=round( $maxtemp, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$maxtempRound °C</strong></td><td>$maxtempZeitrest</td>");
                     }
+                    if($maxtemp==Null){
+                    echo("<td>-</td><td>-</td>");
+                    }
                     }
                 ?>
                </tr>
@@ -88,6 +94,9 @@
                     $mintempZeitrest = substr($mintempZeit, -8);
                     $mintempRound=round( $mintemp, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$mintempRound °C</strong></td><td>$mintempZeitrest</td>");
+                    }
+                    if($mintemp==Null){
+                    echo("<td>-</td><td>-</td>");
                     }
                     }
                 ?>
