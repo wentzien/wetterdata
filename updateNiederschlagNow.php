@@ -89,6 +89,7 @@ $pforzheim=array();
          $station=$entry[0];
              $year=substr($entry[1],0,4);
              $month=substr($entry[1],4,2);
+             $canvasmonth=$month-1;
              $day=substr($entry[1],6,2);
              $hour=substr($entry[1],8,2);
              $minute=substr($entry[1],10,2);
@@ -100,7 +101,7 @@ $pforzheim=array();
              $RWS_IND_10=$entry[5];
              $eor=$entry[6];             
              $quality=$entry[2];
-             $canvasts="$year, $month, $day, $hour, $minute";         
+             $canvasts="$year, $canvasmonth, $day, $hour, $minute";         
   
          
          

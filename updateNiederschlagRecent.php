@@ -88,6 +88,7 @@ $pforzheim=array();
          $station=$entry[0];
              $year=substr($entry[1],0,4);
              $month=substr($entry[1],4,2);
+             $canvasmonth=$month-1;
              $day=substr($entry[1],6,2);
              $timestamp= mktime($month,$day,$year);
              $ts="$year-$month-$day";             
@@ -96,7 +97,7 @@ $pforzheim=array();
              $NSH_TAG=$entry[5];
              $SH_TAG=$entry[6];           
              $quality=$entry[2];
-             $canvasts="$year, $month, $day";       
+             $canvasts="$year, $canvasmonth, $day";       
   
          
          
