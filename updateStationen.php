@@ -31,7 +31,7 @@ $pforzheim=array();
          
          
          
-         $SQL="INSERT INTO Stationen_copy (id,stationsname,kennung,stationskennung, BR_HIGH, LA_HIGH, höhe, flussgebiet, BL,Beginn,Ende) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+         $SQL="INSERT INTO alleStationen (id,stationsname,kennung,stationskennung, BR_HIGH, LA_HIGH, höhe, flussgebiet, BL,Beginn,Ende) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                 
  
                 
