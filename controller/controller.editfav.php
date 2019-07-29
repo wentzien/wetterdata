@@ -40,7 +40,7 @@ if(count($_POST)>0){
     $pdo = Core::$pdo;
     $search= "'%".filter_input(INPUT_POST,"stationname")."%'";
     if($search<>"'%%'"){
-    $SQLstat= "SELECT * FROM alleStationen LEFT JOIN Stationen ON alleStationen.statid = Stationen.id Where  (Stationen.stationsname is NULL) AND  statname LIKE $search order by stationsname";
+    $SQLstat= "SELECT * FROM (SELECT T1.id, T1.stationsname FROM (SELECT id, stationsname, kennung AS RR FROM alleStationen where kennung='RR') T1 INNER JOIN (SELECT id, kennung AS MN FROM alleStationen where kennung='MN') T2 ON T1.id=T2.id) here WHERE stationsname LIKE $search Order by Stationsname";
     $stationsliste=$pdo->query($SQLstat);
     }
 }
