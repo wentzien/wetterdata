@@ -16,7 +16,20 @@ $querystationen=$pdo->query($sqlstationen);
 
 $stationen=array();
 foreach($querystationen as $row){
-    $stationen[]=$row['id'];
+    If ($row['id']<10)
+    {
+        $nullen = "0000";
+    }
+    elseif ($row['id']<100) {
+    $nullen = "000";
+}
+    elseif ($row['id']<1000) {
+    $nullen = "00";
+}
+    elseif ($row['id']<10000) {
+    $nullen = "0";
+}
+    $stationen[]=$nullen.$row['id'];
 }
 function DatenEinspielen ($url){
 
