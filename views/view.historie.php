@@ -3,7 +3,20 @@
 
 <!--Header-->
 <div data-role="header">
-        <h1>Historische Wetterdaten</h1>
+    <?php 
+    $wert=core::$view->wert;
+    ?>
+        <h1>Historische Wetterdaten <?php
+                     if($wert=="avg"){
+                         echo("(Durschnitts-Werte)");
+                     }
+                     if($wert=="min"){
+                         echo("(Min-Werte)");
+                     }
+                     if($wert=="max"){
+                         echo("(Max-Werte)");
+                     }
+        ?></h1>
 </div>
 <br>
 

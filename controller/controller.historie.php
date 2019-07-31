@@ -11,6 +11,7 @@ $taskerkenner=$_POST['taskerkenner'];
 
 //Sollen Max, Min oder Avg Werte ausgewählt werden
 $wertart=$_POST['wertart'];
+Core::$view->wert=$wertart;
 
 $datumVon=$_POST['datumVon'];
 $datumBis=$_POST['datumBis'];
