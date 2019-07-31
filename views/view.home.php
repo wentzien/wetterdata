@@ -58,7 +58,7 @@ if($user->vorname!=""){
     <ul>
       <li><a href="#one" data-ajax="false">Temperatur</a></li>
       <li><a href="#two" data-ajax="false">Luftdruck</a></li>
-      <li><a href="#three" data-ajax="false">Niederschlag</a></li>
+      <li><a href="#three" data-ajax="false">Relative Luftfeuchte</a></li>
     </ul>
   </div>
 <div id="one" class="ui-body-d ui-content ui-responsive">
