@@ -126,7 +126,7 @@ foreach ($stationen as $station) {
 }
     
     //Url für Datei der Daten von "heute"
-    $urlnow = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/precipitation/now/10minutenwerte_nieder_0".$stationX."_now.zip";
+    $urlnow = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/precipitation/now/10minutenwerte_nieder_".$stationX."_now.zip";
     //Url für Datei der Daten von "gestern" bis 2 Jahre zurück
     //$urlrecent = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/precipitation/recent/10minutenwerte_nieder_".$station."_akt.zip";
     
