@@ -561,7 +561,7 @@
                     $coldhRound=round( $coldh, 2, PHP_ROUND_HALF_UP);
                     echo("<td><strong>$coldhRound °C</strong></td><td>$coldhZeitrest</td>");
                     }
-                    if($colh==Null){
+                    if($coldh==Null){
                     echo("<td>-</td><td>-</td>");
                     }
                     }
