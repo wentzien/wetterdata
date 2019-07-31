@@ -8,7 +8,7 @@ $datumDeutsch=date("d.m.Y", $timestamp);
 Core::$view->datumDeutsch=$datumDeutsch;
 $pdo=Core::$pdo;
 $dieStation=$_POST['ausgewStation'];
-//Wurden Stationswerte übergeben?, wenn nicht soll der Nutzer darauf hingwiesen werden dass er eine Station auswähelen soll
+//Wurden Stationswerte übergeben?, wenn nicht soll der Nutzer darauf hingwiesen werden dass er eine Station auswählen soll
 If ($dieStation<>""){
     $taskerkenner=$_POST['taskerkenner'];
     if($taskerkenner=="favorit"){

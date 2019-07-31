@@ -4,3 +4,7 @@ nbproject/private/private.properties
 nbproject/private/private.xml
 *.properties
 nbproject/private/private.xml
+nbproject/private/config.properties
+nbproject/private/configs/hsonline.properties
+nbproject/private/private.properties
+nbproject/private/private.xml
