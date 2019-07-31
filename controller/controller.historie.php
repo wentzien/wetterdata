@@ -39,34 +39,34 @@ foreach($dieStation as $stat){
     Core::$view->$stationsNummer=$stat;
     
     //Übergabe der Temp Werte
-    $sqltemp="select temp20, canvasts from Temperatur where station=$stat AND temp20>-273 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $sqltemp="select avg(temp20) as temp20, canvasts from Temperatur where station=$stat AND temp20>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' group by year(ts), month(ts), day(ts) ORDER BY ts asc";
     $tempheute=$pdo->query($sqltemp);
     $HeuteTempNummer="heuteTemp$i";
     Core::$view->$HeuteTempNummer=$tempheute;
 
     //Übergabe des Luftdrucks
-    $sqldruck="select Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $sqldruck="select avg(Luftdruck) as Luftdruck, canvasts from Temperatur where station=$stat AND Luftdruck>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' group by year(ts), month(ts), day(ts) ORDER BY ts asc";
     $druckheute=$pdo->query($sqldruck);
     $HeuteDruckNummer="heuteDruck$i";
     Core::$view->$HeuteDruckNummer=$druckheute;
     //Ende Übergabe des Luftdrucks
 
     //Übergabe Luftfeuchtigkeit
-    $sqlfeuchte="select feuchte, canvasts from Temperatur where station=$stat AND feuchte>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $sqlfeuchte="select avg(feuchte) as feuchte, canvasts from Temperatur where station=$stat AND feuchte>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' group by year(ts), month(ts), day(ts) ORDER BY ts asc";
     $feuchteheute=$pdo->query($sqlfeuchte);
     $HeuteFeuchteNummer="heuteFeuchte$i";
     Core::$view->$HeuteFeuchteNummer=$feuchteheute;
     //Ende Übergabe der Luftfeuchtigkeit
 
     //Übergabe des Taupunktes
-    $sqltaupunkt="select taupunkt, canvasts from Temperatur where station=$stat AND taupunkt>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $sqltaupunkt="select avg(taupunkt) as taupunkt, canvasts from Temperatur where station=$stat AND taupunkt>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' group by year(ts), month(ts), day(ts) ORDER BY ts asc";
     $taupunktheute=$pdo->query($sqltaupunkt);
     $HeuteTaupunktNummer="heuteTaupunkt$i";
     Core::$view->$HeuteTaupunktNummer=$taupunktheute;
     //Ende Übergabe des Taupunkt
     
     //Übergabe Niederschlag
-    $sqlniederschlag="select RS, canvasts from niederschlagdaily where station=$stat AND RS>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' AND ts order by ts asc";
+    $sqlniederschlag="select avg(RS) as RS, canvasts from niederschlagdaily where station=$stat AND RS>-999 AND ts>'$datumVon%' AND ts<'$datumBis%' group by year(ts), month(ts), day(ts) ORDER BY ts asc";
     $niederschlagheute=$pdo->query($sqlniederschlag);
     $HeuteniederschlagNummer="heuteniederschlag$i";
     Core::$view->$HeuteniederschlagNummer=$niederschlagheute;
