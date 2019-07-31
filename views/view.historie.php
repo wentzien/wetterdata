@@ -3,7 +3,20 @@
 
 <!--Header-->
 <div data-role="header">
-        <h1>Historische Wetterdaten</h1>
+    <?php 
+    $wert=core::$view->wert;
+    ?>
+        <h1>Historische Wetterdaten <?php
+                     if($wert=="avg"){
+                         echo("(Durschnitts-Werte)");
+                     }
+                     if($wert=="min"){
+                         echo("(Min-Werte)");
+                     }
+                     if($wert=="max"){
+                         echo("(Max-Werte)");
+                     }
+        ?></h1>
 </div>
 <br>
 
@@ -19,6 +32,11 @@
         echo("<option value=".$as['id']." >".$as['stationsname']."</option>\n");
         }
         ?>
+    </select>
+    <select name="wertart" id="select-native-1">
+        <option value="avg">Durchschnitts-Werte</option>
+        <option value="min">Min-Werte</option>
+        <option value="max">Max-Werte</option>
     </select>
     <input type="hidden" name="taskerkenner"  id="taskerkenner" value="historie"/>
     <label for="datumVon">Zeitraum von:</label>
