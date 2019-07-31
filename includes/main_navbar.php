@@ -3,14 +3,20 @@
     <a href="?task=heute" data-role="button" data-icon="cloud" data-theme="b" data-ajax="false" >Heute</a>
     <a href="?task=historie" data-role="button" data-icon="calendar" data-theme="b" data-ajax="false" >Historie</a>
     <a href="?task=statistik" data-role="button" data-icon="info" data-theme="b" data-ajax="false" >Statistik</a>
-    <a href="?task=editfav" data-role="button" data-icon="gear" data-theme="b" data-ajax="false" >Edit Favoriten</a>
+    
+    
+    
+    
 
     <?php
     $uID=Core::$user->m_oid;
     if ($uID <>""){
         $pdo = Core::$pdo;
+        
+    ?>    
+<a href="?task=editfav" data-role="button" data-icon="gear" data-theme="b" data-ajax="false" >Edit Favoriten</a>
 
-
+    <?php
     $SQLaddfav = "SELECT * FROM favoriten LEFT JOIN Stationen ON favoriten.Stationid = Stationen.ID Where UserID=$uID";
     $ufavs=$pdo->query($SQLaddfav);
     ?>
