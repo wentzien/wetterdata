@@ -20,6 +20,11 @@
         }
         ?>
     </select>
+    <select name="wertart" id="select-native-1">
+        <option value="avg">Durchschnitts-Werte</option>
+        <option value="min">Min-Werte</option>
+        <option value="max">Max-Werte</option>
+    </select>
     <input type="hidden" name="taskerkenner"  id="taskerkenner" value="historie"/>
     <label for="datumVon">Zeitraum von:</label>
     <input type="date" name="datumVon" id="datumVon" value="<?=core::$view->datumVon ?>"/>
