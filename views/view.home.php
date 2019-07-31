@@ -64,7 +64,7 @@ if($user->vorname!=""){
 <div id="one" class="ui-body-d ui-content ui-responsive">
     <h3> Die 10 höchsten Temperaturwerte die in Deutschland gemessen wurden</h3>
     
-    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive" cellpadding="10">
     <thead>
         <tr>
         <th data-priority="1">Rang</th>  
@@ -83,7 +83,7 @@ if($user->vorname!=""){
         <td><?=$i?></td>
         <td><?=$item['stationsname']?></td>
         <td><?=$item['temp5']?></td>
-        <td><?=date(DATE_RFC850,$item['ts'])?></td>        
+        <td><?=$item['ts']?></td>        
       </tr>
     
   <?php } ?>
@@ -93,7 +93,7 @@ if($user->vorname!=""){
   <div id="two" class="ui-body-d ui-content ui-responsive">
 <h3> Die 10 höchsten Luftdruckwerte die in Deutschland gemessen wurden</h3>
     
-    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive" cellpadding="10">
   <thead>
     <tr>
       <th data-priority="1">Rang</th>  
@@ -113,7 +113,7 @@ if($user->vorname!=""){
           <td><?=$i?></td>
           <td><?=$item['stationsname']?></td>
           <td><?=round( $item['Luftdruck'], 2, PHP_ROUND_HALF_UP)?></td>
-          <td><?=date(DATE_RFC850,$item['ts'])?></td>
+          <td><?=$item['ts']?></td>
           </tr>
     
     <?php } ?>
@@ -126,7 +126,7 @@ if($user->vorname!=""){
         
         <h3> Die 10 höchsten relativen Luftfeuchtigskeitswerte die in Deutschland gemessen wurden</h3>
     
-    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive" cellpadding="10">
   <thead>
     <tr>
       <th data-priority="1">Rang</th>  
@@ -146,7 +146,7 @@ if($user->vorname!=""){
           <td><?=$i?></td>
           <td><?=$item['stationsname']?></td>
           <td><?=$item['feuchte']?></td>
-          <td><?=date(DATE_RFC850,$item['ts'])?></td>
+          <td><?=$item['ts']?></td>
           </tr>
     
     <?php } ?>
@@ -173,7 +173,7 @@ if($user->vorname!=""){
            }
            ?>
             <br>
-          <table>
+          <table cellpadding="10">
               <tr>
                   <th></th>                  
                   <th>Alle Stationen</th>
@@ -191,7 +191,7 @@ if($user->vorname!=""){
                     foreach($listalldataqualthree as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         };                        
                         
                     };          
@@ -204,7 +204,7 @@ if($user->vorname!=""){
                     foreach($listalldata as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -215,7 +215,7 @@ if($user->vorname!=""){
                     foreach($listmissval as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -228,7 +228,7 @@ if($user->vorname!=""){
                     foreach($listdataairavg as $row){
                         foreach($row as $layer)
                             {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -239,7 +239,7 @@ if($user->vorname!=""){
                     foreach($listdatahumiavg as $row){
                         foreach($row as $layer)
                             {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -252,7 +252,7 @@ if($user->vorname!=""){
                     foreach($listdatameltavg as $row){
                         foreach($row as $layer)
                             {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -267,7 +267,7 @@ if($user->vorname!=""){
                     foreach($listdatatempavg as $row){
                         foreach($row as $layer)
                             {$value=round($layer[0], 2, PHP_ROUND_HALF_UP);
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?> 
@@ -284,7 +284,7 @@ if($user->vorname!=""){
                     foreach($listmindate as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?>                 
@@ -295,7 +295,7 @@ if($user->vorname!=""){
                     foreach($listmaxdate as $row){
                         foreach($row as $layer)
                             {$value=$layer[0];
-                            echo("<td><center><strong>$value</strong></center></td><th></th>");
+                            echo("<td><center><strong>$value</strong></center></td><td></td>");
                         }; 
                     };   
                 ?>  
