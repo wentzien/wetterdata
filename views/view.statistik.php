@@ -709,7 +709,7 @@
             ?>
           </tr>
            <tr>
-            <td>Menge im <strong style="color:green">Frühling</strong> (Durchschnitt)</td>
+            <td>Menge im <strong style="color:green">Frühling</strong> (Durchschnitt/Tag)</td>
             <?php
             for($t=0; $t<$length; $t++){
                 $row="";
@@ -752,7 +752,9 @@
                 $TrockenF=core::$view->$NameTrockenF;
                 foreach($TrockenF as $row){
                 $trockenf=$row['tage'];
-                echo("<td><strong>$trockenf Tage</strong></td><td>-</td>");
+                $trockenfZeit=$row['ts'];
+                $trockenfZeitrest = substr($trockenfZeit, 0, -15);
+                echo("<td><strong>$trockenf Tage</strong></td><td>$trockenfZeitrest</td>");
                 }
                 if($trockenf==Null){
                     echo("<td>-</td><td>-</td>");
@@ -761,7 +763,7 @@
             ?>
            </tr>
            <tr>
-            <td>Menge im <strong style="color:red">Sommer</strong> (Durchschnitt)</td>
+            <td>Menge im <strong style="color:red">Sommer</strong> (Durchschnitt/Tag)</td>
             <?php
             for($t=0; $t<$length; $t++){
                 $row="";
@@ -804,7 +806,9 @@
                 $TrockenS=core::$view->$NameTrockenS;
                 foreach($TrockenS as $row){
                 $trockens=$row['tage'];
-                echo("<td><strong>$trockens Tage</strong></td><td>-</td>");
+                $trockensZeit=$row['ts'];
+                $trockensZeitrest = substr($trockensZeit, 0, -15);
+                echo("<td><strong>$trockens Tage</strong></td><td>$trockensZeitrest</td>");
                 }
                 if($trockens==Null){
                     echo("<td>-</td><td>-</td>");
@@ -813,7 +817,7 @@
             ?>
            </tr>
            <tr>
-            <td>Menge im <strong style="color:orange">Herbst</strong> (Durchschnitt)</td>
+            <td>Menge im <strong style="color:orange">Herbst</strong> (Durchschnitt/Tag)</td>
             <?php
             for($t=0; $t<$length; $t++){
                 $row="";
@@ -856,7 +860,9 @@
                 $TrockenH=core::$view->$NameTrockenH;
                 foreach($TrockenH as $row){
                 $trockenh=$row['tage'];
-                echo("<td><strong>$trockenh Tage</strong></td><td>-</td>");
+                $trockenhZeit=$row['ts'];
+                $trockenhZeitrest = substr($trockenhZeit, 0, -15);
+                echo("<td><strong>$trockenh Tage</strong></td><td>$trockenhZeitrest</td>");
                 }
                 if($trockenh==Null){
                     echo("<td>-</td><td>-</td>");
@@ -865,7 +871,7 @@
             ?>
            </tr>
            <tr>
-            <td>Menge im <strong style="color:blue">Winter</strong> (Durchschnitt)</td>
+            <td>Menge im <strong style="color:blue">Winter</strong> (Durchschnitt/Tag)</td>
             <?php
             for($t=0; $t<$length; $t++){
                 $row="";
@@ -908,7 +914,9 @@
                 $TrockenW=core::$view->$NameTrockenW;
                 foreach($TrockenW as $row){
                 $trockenw=$row['tage'];
-                echo("<td><strong>$trockenw Tage</strong></td><td>-</td>");
+                $trockenwZeit=$row['ts'];
+                $trockenwZeitrest = substr($trockenwZeit, 0, -15);
+                echo("<td><strong>$trockenw Tage</strong></td><td>$trockenwZeitrest</td>");
                 }
                 if($trockenw==Null){
                     echo("<td>-</td><td>-</td>");
