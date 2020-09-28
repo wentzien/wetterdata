@@ -13,10 +13,10 @@ $stationen[]="10minutenwerte_tu_03362_20100101_20181231_hist.zip";
 
 function DatenEinspielen ($url){
     
-$database="wetterdata";
-$host="141.47.2.40";
-$user="wetterdata";
-$password="wvgnigt";
+$database="";
+$host="";
+$user="";
+$password="";
         
 $pdo = new PDO("mysql:host=".$host.";dbname=".$database.";charset=utf8",$user,$password);
 $pdo->setAttribute( PDO::ATTR_EMULATE_PREPARES,true);
