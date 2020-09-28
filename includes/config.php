@@ -1,9 +1,9 @@
 <?php
 
-$hostname = "141.47.2.40";
-$database = "wetterdata";
-$username = "wetterdata";
-$password = "wvgnigt";
+$hostname = "";
+$database = "";
+$username = "";
+$password = "";
 
 $title="wetterdata";
 $defaultTask="home";
